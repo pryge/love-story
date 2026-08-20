@@ -1,0 +1,48 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.primary {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+.primary:hover {
+  background-color: #4338ca;
+}
+
+.pink {
+  background-color: #ec4899;
+  color: #ffffff;
+}
+
+.pink:hover {
+  background-color: #db2777;
+}
+
+.secondary {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+.secondary:hover {
+  background-color: #1f2937;
+}
+
+.fullWidth {
+  width: 100%;
+}

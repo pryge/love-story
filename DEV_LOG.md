@@ -26,7 +26,8 @@
 | # | Дата | Назва сеансу | Status | Modules | Resume File |
 |---|---|---|---|---|---|
 | 1 | 19.08.2026 | Створення бази даних та Повна авторизація (Auth Backend) | Done ✅ | Backend, Database, Auth | `backend/src/auth/auth.controller.ts` |
-| 2 | 20.08.2026 | Next.js UI, Тестування Auth & Деплой на Vercel | In Progress ⏳ | Frontend, Backend, DevOps, Auth | `frontend/src/app/page.tsx` |
+| 2 | 20.08.2026 | Next.js Modular UI & Створення компонентів | Done ✅ | Frontend, Auth | `frontend/src/app/login/page.tsx` |
+| 3 | 20.08.2026 | Деплой на Vercel та перевірка зв'язку з Supabase | In Progress ⏳ | Frontend, Backend, DevOps | `backend/vercel.json` |
 
 ---
 
@@ -48,10 +49,26 @@
 
 ---
 
-### 🗓️ Сеанс #2 (20.08.2026) — Next.js UI, Тестування Auth & Деплой на Vercel
+### 🗓️ Сеанс #2 (20.08.2026) — Next.js Modular UI & Створення компонентів
+
+#### ✅ Реалізовано:
+- **Модульна архітектура проекту**:
+  - Сторінки у `src/app/` мають всього по 4 рядки коду (`/`, `/login`, `/admin`, `/kitty`).
+  - Створено універсальні UI компоненти [Button](file:///Users/pryge/Programming/love-story/frontend/src/components/UI/Button/Button.tsx) та [Input](file:///Users/pryge/Programming/love-story/frontend/src/components/UI/Input/Input.tsx) із власніми `.module.css`.
+- **Архітектурні покращення Senior-рівня**:
+  - **1. Barrel Exports (`index.ts`)**: створити чисті короткі імпорти для `src/components/UI` та всіх ролевих модулів `src/components/modules/admin/` і `src/components/modules/kitty/`.
+  - **2. API Сервісний шар**: [src/services/auth.service.ts](file:///Users/pryge/Programming/love-story/frontend/src/services/auth.service.ts) виніс усю мережеву логіку `fetch` з UI-компонентів.
+  - **3. Централізовані типи**: [src/types/auth.ts](file:///Users/pryge/Programming/love-story/frontend/src/types/auth.ts) містить інтерфейси `User`, `Role`, DTOs та `AuthResponse`.
+  - **4. Глобальні CSS змінні**: [src/app/globals.css](file:///Users/pryge/Programming/love-story/frontend/src/app/globals.css) додано Design Tokens (`--primary-color`, `--pink-color`, `--kitty-bg`, `--admin-bg`).
+- **Успішний Build**: `npm run build` пройдено з **0 помилок**!
+
+---
+
+### 🗓️ Сеанс #3 (20.08.2026) — Деплой на Vercel та перевірка зв'язку з Supabase
 
 #### ⏳ В процесі:
-- **Next.js Frontend UI**: Створення базового красивого дизайну з формами входу (Admin Login & Романтичний 4-значний PIN для Каті).
-- **Інтеграція Auth**: Перевірка входу, збереження JWT токена, перенаправлення на захищений профіль.
-- **Деплой на Vercel**: Налаштування та деплой бекенду NestJS і фронтенду Next.js.
+- Деплой бекенду `backend` на Vercel (використовуючи `vercel.json`).
+- Деплой фронтенду `frontend` на Vercel та підключення `NEXT_PUBLIC_API_URL`.
+- Тестування входу в реальному часі на деплої!
+
 

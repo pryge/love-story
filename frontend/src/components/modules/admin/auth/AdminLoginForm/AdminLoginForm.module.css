@@ -1,0 +1,29 @@
+.card {
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  border-radius: 12px;
+  background: #fafafa;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.error {
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
