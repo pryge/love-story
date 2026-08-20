@@ -27,7 +27,8 @@
 |---|---|---|---|---|---|
 | 1 | 19.08.2026 | Створення бази даних та Повна авторизація (Auth Backend) | Done ✅ | Backend, Database, Auth | `backend/src/auth/auth.controller.ts` |
 | 2 | 20.08.2026 | Next.js Modular UI & Створення компонентів | Done ✅ | Frontend, Auth | `frontend/src/app/login/page.tsx` |
-| 3 | 20.08.2026 | Деплой на Vercel та перевірка зв'язку з Supabase | In Progress ⏳ | Frontend, Backend, DevOps | `backend/vercel.json` |
+| 3 | 20.08.2026 | Деплой на Render (Backend) & Vercel (Frontend) | Done ✅ | Frontend, Backend, DevOps | `frontend/src/services/auth.service.ts` |
+| 4 | --.--.2026 | Створення Дизайну, Таймера та Спільного Календаря | Draft 📝 | Frontend, Auth | `frontend/src/app/kitty/page.tsx` |
 
 ---
 
@@ -64,11 +65,18 @@
 
 ---
 
-### 🗓️ Сеанс #3 (20.08.2026) — Деплой на Vercel та перевірка зв'язку з Supabase
+### 🗓️ Сеанс #3 (20.08.2026) — Деплой на Render (Backend) & Vercel (Frontend)
 
-#### ⏳ В процесі:
-- Деплой бекенду `backend` на Vercel (використовуючи `vercel.json`).
-- Деплой фронтенду `frontend` на Vercel та підключення `NEXT_PUBLIC_API_URL`.
-- Тестування входу в реальному часі на деплої!
+#### ✅ Реалізовано:
+- **Бекенд NestJS задеплоєно на Render.com**:
+  - Задеплоєно як Web Service у папці `backend`.
+  - Підключено змінні `DATABASE_URL` та `DIRECT_URL` для Supabase.
+  - Життєве посилання бекенду: `https://love-story-mr3u.onrender.com`.
+- **Фронтенд Next.js задеплоєно на Vercel**:
+  - Задеплоєно у папці `frontend`.
+  - Підключено `NEXT_PUBLIC_API_URL` до Render бекенду.
+- **Повне тестування входу**:
+  - Успішна перевірка авторизації Admin (Email + Password) та Katia (PIN 1501).
+  - Успішне визначення ролей та перенаправлення у відповідні кабінети!
 
 
