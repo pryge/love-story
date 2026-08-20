@@ -75,6 +75,9 @@
 - **Фронтенд Next.js задеплоєно на Vercel**:
   - Задеплоєно у папці `frontend`.
   - Підключено `NEXT_PUBLIC_API_URL` до Render бекенду.
+- **Налаштовано Keep-Alive для Render (24/7 Активність)**:
+  - Створено ендпоінт `GET /health` у [app.controller.ts](file:///Users/pryge/Programming/love-story/backend/src/app.controller.ts).
+  - Підключено авто-пінг через UptimeRobot що 5 хвилин (бекенд більше не засинає).
 - **Повне тестування входу**:
   - Успішна перевірка авторизації Admin (Email + Password) та Katia (PIN 1501).
   - Успішне визначення ролей та перенаправлення у відповідні кабінети!
