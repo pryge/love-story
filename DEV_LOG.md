@@ -27,7 +27,60 @@
 |---|---|---|---|---|---|
 | 1 | 19.08.2026 | Створення бази даних та Повна авторизація (Auth Backend) | Done ✅ | Backend, Database, Auth | `backend/src/auth/auth.controller.ts` |
 | 2 | 20.08.2026 | Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel) | Done ✅ | Frontend, Backend, DevOps, Auth | `frontend/src/services/auth.service.ts` |
-| 3 | --.--.2026 | Створення Дизайну, Таймера та Спільного Календаря | Draft 📝 | Frontend, Auth | `frontend/src/app/kitty/page.tsx` |
+| 3 | 24.08.2026 | Авторизація v2.0 & Оновлення UI/UX Входу | In Progress ⏳ | Frontend, Backend, Auth | `frontend/src/app/login/page.tsx` |
+
+---
+
+## 📌 Детальний журнал розробки
+
+### 🗓️ Сеанс #1 (19.08.2026) — Створення бази даних та Повна авторизація (Auth Backend)
+
+#### ✅ Реалізовано:
+- **База даних Supabase + Prisma 7**:
+  - Налаштовано `schema.prisma` з ролями `ADMIN` та `KITTY`.
+  - Застосовано міграцію `init_user` в Supabase.
+  - Увімкнено **RLS** у Supabase SQL Editor.
+- **Логіка Auth у NestJS**:
+  - Ендпоінти: `POST /auth/login-admin` та `POST /auth/login-pin` (`1501`).
+  - Захищений `GET /auth/me` через `JwtAuthGuard`.
+  - Валідація Zod.
+- **Prisma Seed**:
+  - Створено `prisma/seed.ts`, додано акаунти Admin та Katia у Supabase.
+
+---
+
+### 🗓️ Сеанс #2 (20.08.2026) — Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel)
+
+#### ✅ Реалізовано:
+- **Модульна архітектура проекту**:
+  - Сторінки у `src/app/` мають всього по 4 рядки коду (`/`, `/login`, `/admin`, `/kitty`).
+  - Створено універсальні UI компоненти [Button](file:///Users/pryge/Programming/love-story/frontend/src/components/UI/Button/Button.tsx) та [Input](file:///Users/pryge/Programming/love-story/frontend/src/components/UI/Input/Input.tsx) із власніми `.module.css`.
+  - Модулі чисто розділено за ролями `src/components/modules/admin/` та `src/components/modules/kitty/`.
+- **Архітектурні покращення Senior-рівня**:
+  - **1. Barrel Exports (`index.ts`)**: чисті короткі імпорти для UI та всіх модулів.
+  - **2. API Сервісний шар**: [src/services/auth.service.ts](file:///Users/pryge/Programming/love-story/frontend/src/services/auth.service.ts) виніс усю мережеву логіку `fetch` з UI-компонентів.
+  - **3. Централізовані типи**: [src/types/auth.ts](file:///Users/pryge/Programming/love-story/frontend/src/types/auth.ts) містить інтерфейси `User`, `Role`, DTOs та `AuthResponse`.
+  - **4. Глобальні CSS змінні**: [src/app/globals.css](file:///Users/pryge/Programming/love-story/frontend/src/app/globals.css) додано Design Tokens (`--primary-color`, `--pink-color`, `--kitty-bg`, `--admin-bg`).
+- **Деплой та Зв'язок**:
+  - **NestJS Backend** задеплоєно на **Render.com** (`https://love-story-mr3u.onrender.com`).
+  - **Next.js Frontend** задеплоєно на **Vercel**.
+  - **Keep-Alive (24/7 Активність)**: ендпоінт `GET /health` у [app.controller.ts](file:///Users/pryge/Programming/love-story/backend/src/app.controller.ts) + UptimeRobot пінг що 5 хвилин (сервер не засинає).
+- **Повне тестування**: успішна перевірка авторизації Admin (Email + Password) та Katia (PIN 1501) в реальному часі!
+
+---
+
+### 🗓️ Сеанс #3 (24.08.2026) — Авторизація v2.0, Захист Роутів & Re-hydration
+
+#### ⏳ В процесі:
+- **1. Поділ Входів за Ролями (Auth v2.0)**:
+  - Основний роут `/login` призначений ТІЛЬКИ для Киці (4-значний PIN `1501`).
+  - Окремий секретний роут для входу Адміна `/login/admin` (Email + Пароль).
+- **2. Авто-авторизація при оновленні (Re-hydration)**:
+  - Автоматична перевірка токена у `localStorage` при завантаженні через `authService.getMe(token)`.
+  - Збереження сесії без необхідності повторного вводу пароля/PIN після F5.
+- **3. Захист роутів (Next.js Middleware)**:
+  - Створення `src/middleware.ts` для перевірки доступу до `/kitty` та `/admin`.
+  - Перенаправлення неавторизованих користувачів та захист ролей.
 
 ---
 
