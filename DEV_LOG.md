@@ -74,13 +74,12 @@
 #### ⏳ В процесі:
 - **1. Поділ Входів за Ролями (Auth v2.0)**:
   - Основний роут `/login` призначений ТІЛЬКИ для Киці (4-значний PIN `1501`).
-  - Окремий секретний роут для входу Адміна `/login/admin` (Email + Пароль).
-- **2. Авто-авторизація при оновленні (Re-hydration)**:
-  - Автоматична перевірка токена у `localStorage` при завантаженні через `authService.getMe(token)`.
-  - Збереження сесії без необхідності повторного вводу пароля/PIN після F5.
-- **3. Захист роутів (Next.js Middleware)**:
-  - Створення `src/middleware.ts` для перевірки доступу до `/kitty` та `/admin`.
-  - Перенаправлення неавторизованих користувачів та захист ролей.
+  - Створено секретний роут для входу Адміна `/login/admin` ([page.tsx](file:///Users/pryge/Programming/love-story/frontend/src/app/login/admin/page.tsx)).
+- **2. Захист роутів (Next.js Middleware)**:
+  - Створено [src/middleware.ts](file:///Users/pryge/Programming/love-story/frontend/src/middleware.ts) для автоматичної перевірки доступу до `/admin` та `/kitty`.
+  - Встановлено збереження та видалення cookie `accessToken` у [useAuthStore.ts](file:///Users/pryge/Programming/love-story/frontend/src/store/useAuthStore.ts).
+- **3. Авто-авторизація при оновленні (Re-hydration)**:
+  - Планується перевірка токена у `localStorage` при завантаженні через `authService.getMe(token)`.
 
 ---
 

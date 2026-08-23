@@ -14,12 +14,14 @@ export const useAuthStore = create<AuthState>((set) => ({
   setAuth: (user, token) => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('accessToken', token);
+      document.cookie = `accessToken=${token}; path=/; max-age=86400; SameSite=Lax`;
     }
     set({ user, token });
   },
   logout: () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('accessToken');
+      document.cookie = 'accessToken=; path=/; max-age=0; SameSite=Lax';
     }
     set({ user: null, token: null });
   },
