@@ -28,7 +28,7 @@
 | 1 | 19.08.2026 | Створення бази даних та Повна авторизація (Auth Backend) | Done ✅ | Backend, Database, Auth | `backend/src/auth/auth.controller.ts` |
 | 2 | 20.08.2026 | Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel) | Done ✅ | Frontend, Backend, DevOps, Auth | `frontend/src/services/auth.service.ts` |
 | 3 | 23.08.2026 | Авторизація v2.0, Захист Роутів & Re-hydration | Done ✅ | Frontend, Backend, Auth | `frontend/src/middleware.ts` |
-| 4 | --.--.2026 | Стилізація Входу (Auth UI v2.0) & Модуль Таймера | Draft 📝 | Frontend, Auth | `frontend/src/app/login/page.tsx` |
+| 4 | --.--.2026 | Романтичний Вхід v2.0 (iPhone-style PIN & Мобільна Адаптація) | Draft 📝 | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
 
 ---
 
@@ -81,6 +81,18 @@
   - Встановлено збереження та видалення cookie `accessToken` у [useAuthStore.ts](file:///Users/pryge/Programming/love-story/frontend/src/store/useAuthStore.ts).
 - **3. Авто-авторизація при оновленні (Re-hydration)**:
   - Створено [AuthProvider.tsx](file:///Users/pryge/Programming/love-story/frontend/src/components/providers/AuthProvider.tsx), який автоматично перевіряє токен у `localStorage` через `authService.getMe(token)` та відновлює сесію без повторного вводу PIN/пароля при оновленні сторінки (F5).
+
+---
+
+### 🗓️ Сеанс #4 (--.--.2026) — Романтичний Вхід v2.0 (iPhone-style PIN & Мобільна Адаптація)
+
+#### 📝 Заплановано:
+- **1. iPhone-style PIN Вхід для Каті**:
+  - 4 романтичні круглі індикатори (dots/сердечка), які заповнюються при введенні цифр.
+  - Анімована віртуальна кнопкова клавіатура (1-9, 0, Backspace).
+  - Струшування (Shake Animation) та романтичні підказки при помилковому PIN.
+- **2. Мобільна адаптація (Mobile-First UI)**:
+  - Адаптація розмірів, відступів та шрифтів під смартфони (iPhone / Android).
 
 ---
 
