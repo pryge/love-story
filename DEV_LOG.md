@@ -29,6 +29,7 @@
 | 2 | 20.08.2026 | Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel) | Done ✅ | Frontend, Backend, DevOps, Auth | `frontend/src/services/auth.service.ts` |
 | 3 | 23.08.2026 | Авторизація v2.0, Захист Роутів & Re-hydration | Done ✅ | Frontend, Backend, Auth | `frontend/src/middleware.ts` |
 | 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts, Loader System & Typography | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
+| 5 | --.--.2026 | Дашборд Каті: Layout, Header, PWA, iOS Fixes & Timer | Draft 📝 | Frontend, Timer & Calendar | `frontend/src/app/kitty/page.tsx` |
 
 ---
 
@@ -106,3 +107,21 @@
   - Напівпрозора скляна вуаль `backdrop-filter: blur(6px)` без брудного сірого нальоту.
 - **8. Мобільна адаптація та фікс скролу iPhone**:
   - Впроваджено `100dvh` та `overflow: hidden` для повного усунення небажаного скролу у браузері iOS Safari.
+
+---
+
+### 🗓️ Сеанс #5 (--.--.2026) — Дашборд Каті: Layout, Header, PWA, iOS Fixes & Timer
+
+#### 📝 Заплановано:
+- **1. Адаптивний Лайоут та Хедер Дашборду (`src/components/modules/kitty/dashboard/`)**:
+  - **Top Glass Header**: Динамічне привітання за часом доби (*"Доброго ранку/дня/вечора, Катрусю 🌸"*), перемикач теми (Light / Night Mode) та рандомна цитата дня.
+  - **iOS Bottom Navigation Bar**: Нижняя панель для iPhone з 5 кнопками (*Home, Wishlist, Coupons, Memories, Safe*).
+- **2. Повна iOS Safari Адаптація & PWA**:
+  - Впровадження `overscroll-behavior-y: none` проти еластичного відскоку iOS.
+  - Meta-теги `viewportFit: 'cover'`, `userScalable: false`, `themeColor`.
+  - Створення `apple-touch-icon.png` та `manifest.json` для збереження на робочий стіл iPhone як додатка без рамок Safari.
+- **3. Атмосферне Тло та Романтичний Футер**:
+  - Перемикач варіантів фону (Aurora Mesh Gradient vs Sparkles).
+  - Рукописний підпис у низу сторінки: *"Твій особистий простір, створений коханим ♥"* (`Marck Script`).
+- **4. Перший Головний Віджет (за наявності часу)**:
+  - **Таймер кохання (Relationship Counter)**: Живий лічильник часу разом (роки, місяці, дні, години, хвилини, секунди).
