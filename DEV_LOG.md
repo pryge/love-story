@@ -28,7 +28,7 @@
 | 1 | 19.08.2026 | Створення бази даних та Повна авторизація (Auth Backend) | Done ✅ | Backend, Database, Auth | `backend/src/auth/auth.controller.ts` |
 | 2 | 20.08.2026 | Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel) | Done ✅ | Frontend, Backend, DevOps, Auth | `frontend/src/services/auth.service.ts` |
 | 3 | 23.08.2026 | Авторизація v2.0, Захист Роутів & Re-hydration | Done ✅ | Frontend, Backend, Auth | `frontend/src/middleware.ts` |
-| 4 | --.--.2026 | Романтичний Вхід v2.0 (iPhone-style PIN), 404 & PWA Іконки | Draft 📝 | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
+| 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts & Typography System | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
 
 ---
 
@@ -80,20 +80,23 @@
   - Створено [src/middleware.ts](file:///Users/pryge/Programming/love-story/frontend/src/middleware.ts) для автоматичної перевірки доступу до `/admin` та `/kitty`.
   - Встановлено збереження та видалення cookie `accessToken` у [useAuthStore.ts](file:///Users/pryge/Programming/love-story/frontend/src/store/useAuthStore.ts).
 - **3. Авто-авторизація при оновленні (Re-hydration)**:
-  - Створено [AuthProvider.tsx](file:///Users/pryge/Programming/love-story/frontend/src/components/providers/AuthProvider.tsx), який автоматично перевіряє токен у `localStorage` через `authService.getMe(token)` та відновлює сесію без повторного вводу PIN/пароля при оновленні сторінки (F5).
+  - Створено [AuthProvider.tsx](file:///Users/pryge/Programming/love-story/frontend/src/providers/AuthProvider.tsx), який автоматично перевіряє токен у `localStorage` через `authService.getMe(token)` та відновлює сесію без повторного вводу PIN/пароля при оновленні сторінки (F5).
 
 ---
 
-### 🗓️ Сеанс #4 (--.--.2026) — Романтичний Вхід v2.0 (iPhone-style PIN), 404 & PWA Іконки
+### 🗓️ Сеанс #4 (25.08.2026) — Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts & Typography System
 
-#### 📝 Заплановано:
-- **1. iPhone-style PIN Вхід для Каті (Mobile-First UI)**:
-  - 4 романтичні круглі індикатори (dots/сердечка), які заповнюються при введенні цифр.
-  - Анімована віртуальна кнопкова клавіатура (1-9, 0, Backspace).
-  - Струшування (Shake Animation) та романтичні підказки при помилковому PIN.
-- **2. Романтична сторінка 404 (`src/app/not-found.tsx`)**:
-  - Кастомна мила сторінка з текстом *"Ой! Ця сторіночка загубилася у нашому віртуальному світі... ❤️"* та кнопкою *"Повернутися додому"*.
-- **3. PWA Іконка додатку для iPhone (`apple-touch-icon`, `manifest.json`)**:
-  - Налаштування сайту для збереження на початковий екран iPhone як повноцінного мобільного додатку без рамок браузера.
-- **4. Supabase DB Keep-Alive (`GET /health` DB Query)**:
-  - Додати швидкий SQL-запит `await prisma.user.count()` у ендпоінт `/health`, щоб UptimeRobot кожні 5 хвилин автоматично підтримував Supabase базу від заморожування.
+#### ✅ Реалізовано:
+- **1. Supabase DB Keep-Alive (`GET /health`)**:
+  - Додано `await this.prisma.user.count()` у `getHealth()` в `backend/src/app.controller.ts`. Тепер UptimeRobot що 5 хвилин робить реальний SQL запит у DB і гарантує, що Supabase ніколи не заморозить PostgreSQL базу.
+- **2. Романтична сторінка 404 (`src/components/common/NotFound/`)**:
+  - Розроблено витончену 404 сторінку з Glassmorphism карткою, анімацією `Sparkles`, романтичними текстами та підтримкою клавіші повернення.
+- **3. Анімація Падаючих Сердечок (`FallingHearts`)**:
+  - Створено оптимізований під GPU компонент `FallingHearts` із 3D ефектом глибини (розмиття `blur`, різні розміри, погойдування та обертання навколо нижнього кінчика `transform-origin: bottom center`).
+- **4. Професійна система шрифтів (Design Typography System)**:
+  - `Tenor Sans` (Заголовки), `Manrope` (Основний UI), `Marck Script` (Романтичні рукописні акценти від руки).
+- **5. iPhone-style PIN Вхід для Каті (`/login`)**:
+  - Інтерактивна віртуальна 3x4 клавіатура з 4 анімованими крапками-індикаторами (`dotFilled`).
+  - Автоматичний сабміт при 4-й цифрі, струшування екрану (Shake effect) при помилці та підказка.
+- **6. Dark Mode Центр Авторизації Адміна (`/login/admin`)**:
+  - Строгий чоловічий кібер-стильний Dark Mode для Олега у темних відтінках Obsidian із неоновою короною 👑.
