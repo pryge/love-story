@@ -28,7 +28,7 @@
 | 1 | 19.08.2026 | Створення бази даних та Повна авторизація (Auth Backend) | Done ✅ | Backend, Database, Auth | `backend/src/auth/auth.controller.ts` |
 | 2 | 20.08.2026 | Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel) | Done ✅ | Frontend, Backend, DevOps, Auth | `frontend/src/services/auth.service.ts` |
 | 3 | 23.08.2026 | Авторизація v2.0, Захист Роутів & Re-hydration | Done ✅ | Frontend, Backend, Auth | `frontend/src/middleware.ts` |
-| 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts & Typography System | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
+| 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts, Loader System & Typography | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
 
 ---
 
@@ -84,7 +84,7 @@
 
 ---
 
-### 🗓️ Сеанс #4 (25.08.2026) — Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts & Typography System
+### 🗓️ Сеанс #4 (25.08.2026) — Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts, Loader System & Typography
 
 #### ✅ Реалізовано:
 - **1. Supabase DB Keep-Alive (`GET /health`)**:
@@ -100,3 +100,9 @@
   - Автоматичний сабміт при 4-й цифрі, струшування екрану (Shake effect) при помилці та підказка.
 - **6. Dark Mode Центр Авторизації Адміна (`/login/admin`)**:
   - Строгий чоловічий кібер-стильний Dark Mode для Олега у темних відтінках Obsidian із неоновою короною 👑.
+- **7. Універсальна Система Лоадерів (`Loader`)**:
+  - Багатоваріантний компонент `<Loader />` (`variant="romantic"`, `variant="simple"`, `variant="inline"`).
+  - Романтичні танцюючі сердечка Олега 💙 та Каті 💖, що торкаються кінчиками на овальній орбіті.
+  - Напівпрозора скляна вуаль `backdrop-filter: blur(6px)` без брудного сірого нальоту.
+- **8. Мобільна адаптація та фікс скролу iPhone**:
+  - Впроваджено `100dvh` та `overflow: hidden` для повного усунення небажаного скролу у браузері iOS Safari.
