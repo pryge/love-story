@@ -1,0 +1,106 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff7fa 0%, #fff0f5 50%, #ffe6ee 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 36px;
+  padding: 48px 36px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow:
+    0 25px 70px rgba(214, 51, 132, 0.08),
+    0 4px 20px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.heartIcon {
+  width: 42px;
+  height: 42px;
+  color: #b8527a;
+  margin-bottom: 8px;
+  animation: pulseHeart 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseHeart {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+.number404 {
+  font-family: var(--font-tenor-sans), sans-serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: #b8527a;
+  line-height: 1;
+  margin: 12px 0 16px;
+  letter-spacing: 2px;
+}
+
+.divider {
+  width: 40px;
+  height: 1.5px;
+  background: #e8cad4;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-tenor-sans), sans-serif;
+  font-size: 26px;
+  color: #3b212b;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 14px;
+  color: #8c7b83;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 320px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #cc668c 0%, #b8527a 100%);
+  color: #ffffff;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(184, 82, 122, 0.28);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(184, 82, 122, 0.38);
+}
+
+.subnote {
+  margin-top: 28px;
+  font-family: var(--font-marck-script), cursive;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #b8527a;
+}

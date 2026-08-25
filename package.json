@@ -1,0 +1,13 @@
+{
+  "name": "love-story-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve:dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"blue,pink\" \"npm --prefix backend run start:dev\" \"npm --prefix frontend run dev\"",
+    "dev:backend": "npm --prefix backend run start:dev",
+    "dev:frontend": "npm --prefix frontend run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

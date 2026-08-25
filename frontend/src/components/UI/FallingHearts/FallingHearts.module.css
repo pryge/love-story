@@ -1,0 +1,38 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  top: -40px;
+  color: #b8527a;
+  user-select: none;
+  will-change: transform;
+  transform-origin: bottom center;
+  animation: fall linear infinite, sway ease-in-out infinite alternate;
+}
+
+@keyframes fall {
+  0% {
+    top: -40px;
+  }
+  100% {
+    top: 105vh;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(-18px) rotate(-18deg);
+  }
+  100% {
+    transform: translateX(18px) rotate(18deg);
+  }
+}

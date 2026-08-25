@@ -21,7 +21,7 @@
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-manrope), sans-serif;
   background-color: #f9fafb;
   color: #111827;
 }

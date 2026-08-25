@@ -1,21 +1,28 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Tenor_Sans, Manrope, Marck_Script } from 'next/font/google';
 import './globals.css';
-import { AuthProvider } from '@/components/providers/AuthProvider';
+import { AuthProvider } from '@/providers/AuthProvider';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const tenorSans = Tenor_Sans({
+  weight: '400',
+  subsets: ['cyrillic', 'latin'],
+  variable: '--font-tenor-sans',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const manrope = Manrope({
+  subsets: ['cyrillic', 'latin'],
+  variable: '--font-manrope',
+});
+
+const marckScript = Marck_Script({
+  weight: '400',
+  subsets: ['cyrillic', 'latin'],
+  variable: '--font-marck-script',
 });
 
 export const metadata: Metadata = {
-  title: 'Love Story',
-  description: 'Birthday Gift App',
+  title: 'Love Story 💖',
+  description: 'Birthday Gift App for Katia',
 };
 
 export default function RootLayout({
@@ -24,7 +31,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="uk"
+      className={`${tenorSans.variable} ${manrope.variable} ${marckScript.variable}`}
+    >
       <body>
         <AuthProvider>{children}</AuthProvider>
       </body>
