@@ -4,11 +4,14 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   width: 100%;
   padding: 20px 16px;
   background: linear-gradient(135deg, #fff7fa 0%, #fff0f5 50%, #ffe6ee 100%);
   position: relative;
   overflow: hidden;
+  touch-action: manipulation;
 }
 
 .card {

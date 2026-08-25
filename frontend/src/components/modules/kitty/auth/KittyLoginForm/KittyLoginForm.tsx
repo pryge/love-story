@@ -6,6 +6,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { authService } from '@/services/auth.service';
 import { FallingHearts } from '@/components/UI/FallingHearts/FallingHearts';
 import styles from './KittyLoginForm.module.css';
+import { Loader } from '@/components/UI';
 
 export const KittyLoginForm: React.FC = () => {
   const router = useRouter();
@@ -14,6 +15,7 @@ export const KittyLoginForm: React.FC = () => {
   const [pin, setPin] = useState('');
   const [error, setError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleKeyPress = (num: string) => {
     if (pin.length < 4) {
@@ -30,11 +32,14 @@ export const KittyLoginForm: React.FC = () => {
   useEffect(() => {
     if (pin.length === 4) {
       const submitPin = async () => {
+        setIsLoading(true);
         try {
+          await new Promise((resolve) => setTimeout(resolve, 2000));
           const data = await authService.loginPin({ pin });
           setAuth(data.user, data.accessToken);
           router.push('/kitty');
         } catch {
+          setIsLoading(false);
           setError('Хмм, згадай дату нашої першої зустрічі... 😉');
           setIsShaking(true);
           setTimeout(() => {
@@ -49,6 +54,7 @@ export const KittyLoginForm: React.FC = () => {
 
   return (
     <main className={styles.container}>
+      {isLoading && <Loader variant='romantic' />}
       <FallingHearts count={20} />
 
       <div className={`${styles.card} ${isShaking ? styles.shake : ''}`}>

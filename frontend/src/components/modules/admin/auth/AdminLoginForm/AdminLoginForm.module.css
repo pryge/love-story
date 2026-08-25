@@ -4,12 +4,16 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   width: 100%;
   padding: 20px 16px;
   background: radial-gradient(circle at 50% 0%, #1e1b2e 0%, #0b0c10 70%, #050608 100%);
   position: relative;
   overflow: hidden;
+  touch-action: manipulation;
 }
+
 
 .card {
   background: rgba(22, 25, 34, 0.85);

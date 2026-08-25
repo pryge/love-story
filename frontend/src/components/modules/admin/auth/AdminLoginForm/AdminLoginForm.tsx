@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 import { authService } from '@/services/auth.service';
-import { Crown, Mail, Lock, ArrowRight } from '@/components/UI';
+import { Crown, Mail, Lock, ArrowRight, Loader } from '@/components/UI';
 import styles from './AdminLoginForm.module.css';
 
 export const AdminLoginForm: React.FC = () => {
@@ -22,18 +22,20 @@ export const AdminLoginForm: React.FC = () => {
     setIsLoading(true);
 
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const data = await authService.loginAdmin({ email, password });
       setAuth(data.user, data.accessToken);
       router.push('/admin');
     } catch {
       setError('Невірний Email або Пароль доступу');
-    } finally {
       setIsLoading(false);
     }
   };
 
   return (
     <main className={styles.container}>
+      {isLoading && <Loader variant='simple' />}
+
       <div className={styles.card}>
         <div className={styles.iconWrapper}>
           <Crown size={28} />
