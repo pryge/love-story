@@ -3,19 +3,25 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
+import { useThemeStore } from '@/store/useThemeStore';
 import { authService } from '@/services/auth.service';
 import { FallingHearts } from '@/components/UI/FallingHearts/FallingHearts';
 import styles from './KittyLoginForm.module.css';
-import { Loader } from '@/components/UI';
+import { Loader, Sun, Moon, BackgroundEffects } from '@/components/UI';
 
 export const KittyLoginForm: React.FC = () => {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
+  const { isNightMode, bgVariant, initTheme, toggleTheme } = useThemeStore();
 
   const [pin, setPin] = useState('');
   const [error, setError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    initTheme('kitty');
+  }, [initTheme]);
 
   const handleKeyPress = (num: string) => {
     if (pin.length < 4) {
@@ -54,7 +60,8 @@ export const KittyLoginForm: React.FC = () => {
 
   return (
     <main className={styles.container}>
-      {isLoading && <Loader variant='romantic' />}
+      <BackgroundEffects variant={bgVariant} />
+      {isLoading && <Loader variant="romantic" />}
       <FallingHearts count={20} />
 
       <div className={`${styles.card} ${isShaking ? styles.shake : ''}`}>
@@ -87,7 +94,17 @@ export const KittyLoginForm: React.FC = () => {
               {num}
             </button>
           ))}
-          <div className={styles.emptyKey} />
+
+          <button
+            type="button"
+            className={`${styles.keyButton} ${styles.themeToggleBtn}`}
+            onClick={toggleTheme}
+            title={isNightMode ? 'Денний режим' : 'Нічний режим'}
+          >
+            {isNightMode ? <Sun size={22} /> : <Moon size={22} />}
+          </button>
+
+
           <button
             type="button"
             className={styles.keyButton}
@@ -95,6 +112,7 @@ export const KittyLoginForm: React.FC = () => {
           >
             0
           </button>
+
           <button
             type="button"
             className={styles.keyButton}
@@ -109,3 +127,4 @@ export const KittyLoginForm: React.FC = () => {
     </main>
   );
 };
+

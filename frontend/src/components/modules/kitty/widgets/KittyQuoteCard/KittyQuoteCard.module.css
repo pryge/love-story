@@ -1,0 +1,138 @@
+.quoteCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(253, 242, 248, 0.85) 0%, rgba(250, 232, 240, 0.7) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 207, 232, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.06);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Великі лапки з v0 */
+.quoteMark {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 48px;
+  line-height: 1;
+  color: #ec4899;
+  opacity: 0.6;
+  margin-bottom: -12px;
+  user-select: none;
+}
+
+/* Зафіксована висота контенту, щоб блок НЕ СТРИБАВ */
+.quoteContent {
+  display: flex;
+  align-items: center;
+  min-height: 72px; /* Фіксує висоту незалежно від 1 чи 2 рядків */
+}
+
+.quoteText {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 24px;
+  line-height: 1.35;
+  color: #4a2e35;
+  margin: 0;
+  text-wrap: balance; /* Красивий рівномірний перенос слів */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.changing {
+  opacity: 0;
+  transform: translateY(3px);
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.authorTag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9d4c6c;
+  letter-spacing: 0.03em;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(251, 207, 232, 0.9);
+  color: #ec4899;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  background: #ffffff;
+  transform: scale(1.06);
+  border-color: #f472b6;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+}
+
+/* --- ТЕМНА ТЕМА --- */
+:global([data-theme='dark']) .quoteCard {
+  background: linear-gradient(135deg, rgba(38, 20, 50, 0.85) 0%, rgba(28, 14, 38, 0.75) 100%);
+  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme='dark']) .quoteMark {
+  color: #f472b6;
+  opacity: 0.8;
+}
+
+:global([data-theme='dark']) .quoteText {
+  color: #fce7f3;
+}
+
+:global([data-theme='dark']) .authorTag {
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .actionBtn {
+  background: rgba(55, 30, 75, 0.8);
+  border-color: rgba(236, 72, 153, 0.35);
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .actionBtn:hover {
+  background: rgba(75, 40, 100, 0.95);
+  color: #fce7f3;
+}
+
+/* --- Мобільна адаптація --- */
+@media (max-width: 640px) {
+  .quoteCard {
+    padding: 20px 20px;
+    border-radius: 20px;
+  }
+
+  .quoteMark {
+    font-size: 38px;
+    margin-bottom: -10px;
+  }
+
+  .quoteContent {
+    min-height: 60px; /* Стійка висота на мобільному */
+  }
+
+  .quoteText {
+    font-size: 18px; /* Акуратний шрифт, що красиво лягає */
+    line-height: 1.35;
+  }
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Star, Moon, Sun, LogOut, RefreshCw } from '@/components/UI';
+import { Sparkles, Star, Moon, Sun, LogOut } from '@/components/UI';
 import { useKittyHeader } from './useKittyHeader';
 import styles from './KittyHeader.module.css';
 
@@ -10,14 +10,11 @@ export const KittyHeader: React.FC<{
   onToggleBgVariant?: () => void;
 }> = ({ bgVariant: externalBg, onToggleBgVariant }) => {
   const {
-    quote,
     isNightMode,
     bgVariant: internalBg,
-    isChangingQuote,
     handleLogout,
     toggleTheme,
     toggleBgVariant: internalToggleBg,
-    refreshQuote,
   } = useKittyHeader();
 
   const currentBg = externalBg ?? internalBg;
@@ -26,21 +23,11 @@ export const KittyHeader: React.FC<{
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.quoteSection}>
-          {quote && (
-            <button
-              type="button"
-              className={`${styles.quoteBadge} ${
-                isChangingQuote ? styles.quoteBadgeChanging : ''
-              }`}
-              onClick={refreshQuote}
-              title="Натисни, щоб оновити цитату ✨"
-            >
-              <Sparkles size={16} className={styles.quoteIcon} />
-              <span className={styles.quoteText}>{quote}</span>
-              <RefreshCw size={12} className={styles.refreshIcon} />
-            </button>
-          )}
+        <div className={styles.brandSection}>
+          <span className={styles.brandLogo}>
+            <Sparkles size={18} className={styles.brandIcon} />
+            Katya&apos;s Space
+          </span>
         </div>
 
         <div className={styles.controlsSection}>
@@ -79,3 +66,4 @@ export const KittyHeader: React.FC<{
     </header>
   );
 };
+

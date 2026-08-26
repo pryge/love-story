@@ -30,7 +30,7 @@
 | 3 | 23.08.2026 | Авторизація v2.0, Захист Роутів & Re-hydration | Done ✅ | Frontend, Backend, Auth | `frontend/src/middleware.ts` |
 | 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts, Loader System & Typography | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
 | 5 | 26.08.2026 | Дашборд Каті: Layout v2.0, Modular Architecture, Theme Store & Smooth AnimateIn | Done ✅ | Frontend, Night Mode, Quotes | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
-| 6 | --.--.2026 | Дашборд Каті: Віджети (LoveCountdown, WishCoupons, SinsStats) | Draft 📝 | Frontend, Timer & Calendar, Coupons | `frontend/src/app/kitty/page.tsx` |
+| 6 | 26.08.2026 | Дашборд Каті v2.0: Віджети, 12-Колонкова Адаптивна Сітка & Dark Mode Login | Done ✅ | Frontend, Timer & Calendar, Quotes, Night Mode, Auth | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
 
 ---
 
@@ -144,3 +144,34 @@
   - Усі файли очищено від зайвих коментарів.
   - Успішно зібрано через `npm run build` (0 помилок).
   - Коммічено та запушено в `origin/main` на GitHub.
+
+---
+
+### 🗓️ Сеанс #6 (26.08.2026) — Дашборд Каті v2.0: Віджети, 12-Колонкова Адаптивна Сітка & Dark Mode Login
+
+#### ✅ Реалізовано:
+- **1. Віджет Лічильника «Ми Разом» (`TogetherTimer`)**:
+  - Розроблено новий інтерактивний віджет лічильника часу стосунків за дизайном v0 (`KittyPage 1.png`).
+  - Обчислення років, місяців, днів, годин, хвилин та секунд з точним українським відмінюванням слів (*«2 роки, 6 місяців»*).
+  - Адаптивна сітка: 6 колонок у 1 рядок на десктопі та **3×2 сітка на телефонах** з роздільними лініями між блоками.
+  - Анімований індикатор `• LIVE` та лінійка з датою початку.
+- **2. Віджет Романтичних Цитат (`KittyQuoteCard`)**:
+  - Створено картку-віджет із типографікою `Tenor Sans` та великими лапками `““`.
+  - Інтерактивна кнопка оновлення випадкової цитати з плавним згасанням і появою тексту.
+  - **Фіксована мінімальна висота (`min-height`)**: усунуто ефект «стрибання» картки при перемиканні цитат різної довжини.
+  - **Перенос слів (`text-wrap: balance`)**: рівномірне розпреділення тексту без відірваних слів на мобільному.
+- **3. Гнучка 12-Колонкова Адаптивна Сітка (`12-Column Responsive Grid`)**:
+  - Впроваджено сітку на базі `grid-template-columns: repeat(12, 1fr)` у `KittyDashboard.module.css`.
+  - Підтримка зсувів: `1/3` (4 колонки), `2/3` (8 колонок), `1/2` (6 колонок), `3/3` (12 колонок / full-width).
+  - На десктопі/ноутбуку (`> 900px`): `KittyHeroGreeting` займає 2/3 екрана, праворуч віджет 1/3; `TogetherTimer` на всю ширину; `KittyQuoteCard` у 2-колонковій нижній сітці.
+  - На телефонах (`< 900px`): усі віджети автоматично вишиковуються в 1 зручну вертикальну колонку.
+- **4. Тимчасовий Заглушка-Віджет (`KittyPlaceholderCard`)**:
+  - Створено універсальний віджет-заглушку з пропсом `span="1/3" | "2/3" | "3/3" | "1/2"` та шильдиком ширини для візуального тестування нових блоків дешборду.
+- **5. Темна Тема для Екрана Входу PIN (`KittyLoginForm` Dark Mode)**:
+  - Додано перемикач теми (іконки `Sun` ☀️ / `Moon` 🌙) зліва від нуля `0` на цифровій 3x4 клавіатурі PIN-коду.
+  - Повноцінні стилі темної теми (`[data-theme='dark']`) для форми входу (темний скляний блок, підсвічування індикаторів PIN, темна клавіатура).
+  - Підключено `BackgroundEffects` для гармонійного фону під час вибору теми на екрані входу.
+- **6. Очищення коду & Усунення SSR Hydration Warnings**:
+  - Усунуто Hydration Mismatch у `KittyQuoteCard` через асинхронне встановлення випадкового стану у `useEffect`.
+  - Усі файли очищено від зайвих коментарів і перевірено через `npm run lint` (0 помилок).
+

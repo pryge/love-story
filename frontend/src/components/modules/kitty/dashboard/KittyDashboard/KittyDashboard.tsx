@@ -3,7 +3,12 @@
 import React from 'react';
 import styles from './KittyDashboard.module.css';
 import { KittyHeader, KittyFooter } from '../../layout';
-import { KittyHeroGreeting } from '../../widgets';
+import {
+  KittyHeroGreeting,
+  KittyQuoteCard,
+  TogetherTimer,
+  KittyPlaceholderCard,
+} from '../../widgets';
 import { BackgroundEffects, AnimateIn } from '@/components/UI';
 import { useKittyHeader } from '../../layout/KittyHeader/useKittyHeader';
 
@@ -16,14 +21,45 @@ export const KittyDashboard: React.FC = () => {
       <KittyHeader bgVariant={bgVariant} onToggleBgVariant={toggleBgVariant} />
 
       <main className={styles.mainContent}>
-        <AnimateIn direction="up" delay={0.1}>
-          <KittyHeroGreeting />
-        </AnimateIn>
+        <div className={styles.widgetsGrid}>
+          <div className={styles.colSpan23}>
+            <AnimateIn direction="up" delay={0.1}>
+              <KittyHeroGreeting />
+            </AnimateIn>
+          </div>
+
+          <div className={styles.colSpan13}>
+            <AnimateIn direction="up" delay={0.15}>
+              <KittyPlaceholderCard span="1/3" title="Віджет 1/3 ✨" subtitle="Праворуч від привітання" />
+            </AnimateIn>
+          </div>
+
+          <div className={styles.colSpanFull}>
+            <AnimateIn direction="up" delay={0.2}>
+              <TogetherTimer />
+            </AnimateIn>
+          </div>
+
+          <div className={styles.colSpan12}>
+            <AnimateIn direction="up" delay={0.3}>
+              <KittyQuoteCard />
+            </AnimateIn>
+          </div>
+
+          <div className={styles.colSpan12}>
+            <AnimateIn direction="up" delay={0.35}>
+              <KittyPlaceholderCard span="1/2" title="Віджет 1/2 ✨" subtitle="Нижня сітка віджетів" />
+            </AnimateIn>
+          </div>
+        </div>
       </main>
 
-      <AnimateIn direction="fade" delay={0.3}>
+
+
+      <AnimateIn direction="fade" delay={0.5}>
         <KittyFooter />
       </AnimateIn>
     </div>
   );
 };
+

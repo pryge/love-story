@@ -123,8 +123,13 @@
   background: #f5e4ea;
 }
 
-.emptyKey {
-  visibility: hidden;
+.themeToggleBtn {
+  color: #db2777;
+  background: #fdf2f8;
+}
+
+.themeToggleBtn:hover {
+  background: #fce7f3;
 }
 
 .footerNote {
@@ -132,6 +137,59 @@
   font-size: 18px;
   color: #b8527a;
   margin-top: 8px;
+}
+
+/* --- ТЕМНА ТЕМА --- */
+:global([data-theme='dark']) .container {
+  background: linear-gradient(135deg, #181324 0%, #110d1b 50%, #1f1127 100%);
+}
+
+:global([data-theme='dark']) .card {
+  background: rgba(30, 18, 42, 0.88);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme='dark']) .title {
+  color: #fce7f3;
+}
+
+:global([data-theme='dark']) .subtitle {
+  color: #d8b4fe;
+}
+
+:global([data-theme='dark']) .dot {
+  border-color: rgba(236, 72, 153, 0.4);
+}
+
+:global([data-theme='dark']) .dotFilled {
+  border-color: #f472b6;
+  background: #f472b6;
+  box-shadow: 0 0 12px rgba(244, 114, 182, 0.5);
+}
+
+:global([data-theme='dark']) .hintCard {
+  background: rgba(75, 35, 95, 0.4);
+  border-color: rgba(236, 72, 153, 0.35);
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .keyButton {
+  background: rgba(45, 27, 60, 0.8);
+  color: #fce7f3;
+}
+
+:global([data-theme='dark']) .keyButton:active {
+  background: rgba(75, 40, 100, 0.95);
+}
+
+:global([data-theme='dark']) .themeToggleBtn {
+  background: rgba(65, 35, 85, 0.8);
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .footerNote {
+  color: #f472b6;
 }
 
 @media (max-width: 480px) {
@@ -145,3 +203,4 @@
     font-size: 20px;
   }
 }
+

@@ -21,74 +21,24 @@
   gap: 16px;
 }
 
-.quoteSection {
-  flex: 1;
-  min-width: 0;
+.brandSection {
   display: flex;
   align-items: center;
 }
 
-.quoteBadge {
+.brandLogo {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(251, 207, 232, 0.8);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 16px;
+  font-weight: 600;
   color: #8c5264;
-  max-width: 100%;
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.05);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: quoteFadeIn 0.5s ease-out;
+  letter-spacing: 0.02em;
 }
 
-.quoteBadge:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: #f472b6;
-  transform: translateY(-1px);
+.brandIcon {
   color: #ec4899;
-}
-
-.quoteBadgeChanging {
-  opacity: 0.2;
-  transform: scale(0.96);
-}
-
-.quoteIcon {
-  color: #ec4899;
-  flex-shrink: 0;
-}
-
-.quoteText {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.refreshIcon {
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.3s ease;
-  color: #ec4899;
-  flex-shrink: 0;
-}
-
-.quoteBadge:hover .refreshIcon {
-  opacity: 0.85;
-  transform: rotate(90deg);
-}
-
-@keyframes quoteFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 .controlsSection {
@@ -125,9 +75,8 @@
     gap: 10px;
   }
 
-  .quoteBadge {
-    padding: 5px 10px;
-    font-size: 12px;
+  .brandLogo {
+    font-size: 14px;
   }
 
   .iconBtn {
@@ -142,20 +91,7 @@
   border-bottom-color: rgba(236, 72, 153, 0.2);
 }
 
-:global([data-theme='dark']) .quoteBadge {
-  background: rgba(45, 27, 60, 0.75);
-  border-color: rgba(236, 72, 153, 0.35);
-  color: #f472b6;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-:global([data-theme='dark']) .quoteBadge:hover {
-  background: rgba(65, 38, 88, 0.9);
-  border-color: #f472b6;
-  color: #fce7f3;
-}
-
-:global([data-theme='dark']) .quoteIcon {
+:global([data-theme='dark']) .brandLogo {
   color: #f472b6;
 }
 
@@ -170,3 +106,4 @@
   color: #fb7185;
   border-color: #f472b6;
 }
+

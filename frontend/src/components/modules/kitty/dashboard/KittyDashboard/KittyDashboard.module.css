@@ -27,3 +27,45 @@
   position: relative;
   z-index: 10;
 }
+
+/* 12-колонкова адаптивна сітка дешборду */
+.widgetsGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.colSpan13 {
+  grid-column: span 4;
+}
+
+.colSpan23 {
+  grid-column: span 8;
+}
+
+.colSpan33,
+.colSpanFull {
+  grid-column: span 12;
+}
+
+.colSpan12 {
+  grid-column: span 6;
+}
+
+@media (max-width: 900px) {
+  .widgetsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .colSpan13,
+  .colSpan23,
+  .colSpan33,
+  .colSpanFull,
+  .colSpan12 {
+    grid-column: span 1;
+  }
+}
+
+
