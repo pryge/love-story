@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
-import { getRandomQuote } from './kittyHeader.constants';
+import { getRandomQuote, QUOTES } from './kittyHeader.constants';
 
 export const useKittyHeader = () => {
   const router = useRouter();
@@ -10,11 +10,15 @@ export const useKittyHeader = () => {
   const { isNightMode, bgVariant, initTheme, toggleTheme, toggleBgVariant } =
     useThemeStore();
 
-  const [quote, setQuote] = useState(getRandomQuote);
+  const [quote, setQuote] = useState(() => QUOTES[0]);
   const [isChangingQuote, setIsChangingQuote] = useState(false);
 
   useEffect(() => {
     initTheme('kitty');
+    const timer = setTimeout(() => {
+      setQuote(getRandomQuote());
+    }, 0);
+    return () => clearTimeout(timer);
   }, [initTheme]);
 
   const refreshQuote = () => {

@@ -29,7 +29,8 @@
 | 2 | 20.08.2026 | Next.js Modular Architecture, Auth & Full Deployment (Render + Vercel) | Done ✅ | Frontend, Backend, DevOps, Auth | `frontend/src/services/auth.service.ts` |
 | 3 | 23.08.2026 | Авторизація v2.0, Захист Роутів & Re-hydration | Done ✅ | Frontend, Backend, Auth | `frontend/src/middleware.ts` |
 | 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts, Loader System & Typography | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
-| 5 | --.--.2026 | Дашборд Каті: Layout, Header, PWA, iOS Fixes & Timer | Draft 📝 | Frontend, Timer & Calendar | `frontend/src/app/kitty/page.tsx` |
+| 5 | 26.08.2026 | Дашборд Каті: Layout v2.0, Modular Architecture, Theme Store & Smooth AnimateIn | Done ✅ | Frontend, Night Mode, Quotes | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
+| 6 | --.--.2026 | Дашборд Каті: Віджети (LoveCountdown, WishCoupons, SinsStats) | Draft 📝 | Frontend, Timer & Calendar, Coupons | `frontend/src/app/kitty/page.tsx` |
 
 ---
 
@@ -110,18 +111,23 @@
 
 ---
 
-### 🗓️ Сеанс #5 (--.--.2026) — Дашборд Каті: Layout, Header, PWA, iOS Fixes & Timer
+### 🗓️ Сеанс #5 (26.08.2026) — Дашборд Каті: Layout v2.0, Modular Architecture, Theme Store & Smooth AnimateIn
 
-#### 📝 Заплановано:
-- **1. Адаптивний Лайоут та Хедер Дашборду (`src/components/modules/kitty/dashboard/`)**:
-  - **Top Glass Header**: Динамічне привітання за часом доби (*"Доброго ранку/дня/вечора, Катрусю 🌸"*), перемикач теми (Light / Night Mode) та рандомна цитата дня.
-  - **iOS Bottom Navigation Bar**: Нижняя панель для iPhone з 5 кнопками (*Home, Wishlist, Coupons, Memories, Safe*).
-- **2. Повна iOS Safari Адаптація & PWA**:
-  - Впровадження `overscroll-behavior-y: none` проти еластичного відскоку iOS.
-  - Meta-теги `viewportFit: 'cover'`, `userScalable: false`, `themeColor`.
-  - Створення `apple-touch-icon.png` та `manifest.json` для збереження на робочий стіл iPhone як додатка без рамок Safari.
-- **3. Атмосферне Тло та Романтичний Футер**:
-  - Перемикач варіантів фону (Aurora Mesh Gradient vs Sparkles).
+#### ✅ Реалізовано:
+- **1. Модульна архітектура простору Katia (`src/components/modules/kitty/`)**:
+  - Чітке рознесення компонентів за доменами: `auth/` (авторизація), `layout/` (`KittyHeader`, `KittyFooter`), `widgets/` (`KittyHeroGreeting`), `dashboard/` (`KittyDashboard`).
+  - Повна підготовка для майбутнього дублювання структурних папок у `modules/admin/`.
+- **2. Централізоване Zustand сховище теми (`useThemeStore.ts`)**:
+  - Глобальна синхронізація `isNightMode` та `bgVariant` з `localStorage`.
+  - Впроваджено підтримку доменів `ThemeScope = 'kitty' | 'admin'` для ізольованого збереження налаштувань Каті та Адміна без розсинхронізації тумблера при F5.
+- **3. Універсальний Анімаційний Обгортковий Компонент (`AnimateIn`)**:
+  - Розроблено високопродуктивний UI-компонент `<AnimateIn>` у `src/components/UI/AnimateIn/` на основі `IntersectionObserver` та GPU-прискорення.
+  - Шовкова плавна анімація з виділеним сповільненням (`cubic-bezier(0.22, 1, 0.36, 1)`, `duration={0.85s}`, м'який зсув 18px, напрямки `up`, `down`, `left`, `right`, `fade`).
+- **4. Двоколонкове Hero-вітання & Інтерактивна Шапка (`KittyHeader` & `KittyHeroGreeting`)**:
+  - Заголовок привітання з виділеним рукописним шрифтом `Marck Script` та рожевим сяйвом у темній темі (`"Киця 🌸"`, `"моя принцеса 💖"`, `"кохана 🌙"`).
+  - Інтерактивна плашка цитат у шапці: оновлення цитати кліком (`RefreshCw`) із CSS-анімацією `@keyframes quoteFadeIn`.
+- **5. Атмосферний Фон та Рукописний Футер**:
+  - Перемикач варіантів фону (Aurora Mesh Gradient vs Floating Sparkles з негативними затримками `animationDelay` проти скупчення іскорок).
   - Рукописний підпис у низу сторінки: *"Твій особистий простір, створений коханим ♥"* (`Marck Script`).
-- **4. Перший Головний Віджет (за наявності часу)**:
-  - **Таймер кохання (Relationship Counter)**: Живий лічильник часу разом (роки, місяці, дні, години, хвилини, секунди).
+- **6. Усунення SSR Hydration Mismatch**:
+  - Виправлено розсинхронізацію при генерації випадкової цитати під час Next.js SSR гідрації.
