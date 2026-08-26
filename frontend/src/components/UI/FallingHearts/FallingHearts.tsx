@@ -15,31 +15,35 @@ interface HeartProps {
   swayDuration: number;
 }
 
-export const FallingHearts: React.FC<{ count?: number }> = ({ count = 20 }) => {
-  const [hearts] = useState<HeartProps[]>(() => {
-    if (typeof window === 'undefined') return [];
-    return Array.from({ length: count }).map((_, index) => {
-      const size = Math.floor(Math.random() * 20) + 14;
-      const blurLevels = [0, 0, 0, 1.5, 3.5, 5];
-      const blur = blurLevels[Math.floor(Math.random() * blurLevels.length)];
-      const opacity = Math.random() * 0.55 + 0.25;
-      const left = Math.random() * 100;
-      const duration = Math.random() * 7 + 6;
-      const delay = Math.random() * 8;
-      const swayDuration = Math.random() * 3 + 2;
+const generateHearts = (count: number): HeartProps[] => {
+  if (typeof window === 'undefined') return [];
+  return Array.from({ length: count }).map((_, index) => {
+    const size = Math.floor(Math.random() * 20) + 14;
+    const blurLevels = [0, 0, 0, 1.5, 3.5, 5];
+    const blur = blurLevels[Math.floor(Math.random() * blurLevels.length)];
+    const opacity = Math.random() * 0.55 + 0.25;
+    const left = Math.random() * 100;
+    const duration = Math.random() * 7 + 6;
+    const delay = Math.random() * 8;
+    const swayDuration = Math.random() * 3 + 2;
 
-      return {
-        id: index,
-        left,
-        size,
-        blur,
-        opacity,
-        duration,
-        delay,
-        swayDuration,
-      };
-    });
+    return {
+      id: index,
+      left,
+      size,
+      blur,
+      opacity,
+      duration,
+      delay,
+      swayDuration,
+    };
   });
+};
+
+export const FallingHearts: React.FC<{ count?: number }> = ({ count = 20 }) => {
+  const [hearts] = useState(() => generateHearts(count));
+
+  if (hearts.length === 0) return null;
 
   return (
     <div className={styles.container}>

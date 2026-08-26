@@ -1,0 +1,31 @@
+.animateBox {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.fromUp {
+  transform: translate3d(0, -18px, 0);
+}
+
+.fromDown {
+  transform: translate3d(0, 18px, 0);
+}
+
+.fromLeft {
+  transform: translate3d(-20px, 0, 0);
+}
+
+.fromRight {
+  transform: translate3d(20px, 0, 0);
+}
+
+.fromFade {
+  transform: translate3d(0, 0, 0);
+}

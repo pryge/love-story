@@ -1,0 +1,32 @@
+.footer {
+  width: 100%;
+  padding: 40px 16px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.signature {
+  font-family: var(--font-marck-script), cursive;
+  font-size: 24px;
+  font-weight: 400;
+  color: #704250;
+  text-align: center;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  user-select: none;
+}
+
+:global([data-theme='dark']) .signature {
+  color: #f472b6;
+  text-shadow: 0 0 16px rgba(244, 114, 182, 0.35);
+}
+
+@media (max-width: 768px) {
+  .signature {
+    font-size: 20px;
+  }
+}

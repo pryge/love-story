@@ -1,5 +1,6 @@
-import { KatiaDashboard } from '@/components/modules/kitty/dashboard';
+import { KittyDashboard } from "@/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard";
+
 
 export default function KittyPage() {
-  return <KatiaDashboard />;
+  return <KittyDashboard />;
 }

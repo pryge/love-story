@@ -1,0 +1,172 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255, 245, 248, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(251, 207, 232, 0.5);
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.quoteSection {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.quoteBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(251, 207, 232, 0.8);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #8c5264;
+  max-width: 100%;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.05);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: quoteFadeIn 0.5s ease-out;
+}
+
+.quoteBadge:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #f472b6;
+  transform: translateY(-1px);
+  color: #ec4899;
+}
+
+.quoteBadgeChanging {
+  opacity: 0.2;
+  transform: scale(0.96);
+}
+
+.quoteIcon {
+  color: #ec4899;
+  flex-shrink: 0;
+}
+
+.quoteText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.refreshIcon {
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  color: #ec4899;
+  flex-shrink: 0;
+}
+
+.quoteBadge:hover .refreshIcon {
+  opacity: 0.85;
+  transform: rotate(90deg);
+}
+
+@keyframes quoteFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.controlsSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(251, 207, 232, 0.6);
+  background: rgba(255, 255, 255, 0.8);
+  color: #704250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  background: #ffffff;
+  color: #ec4899;
+  border-color: #f472b6;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .quoteBadge {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .iconBtn {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+}
+
+:global([data-theme='dark']) .header {
+  background: rgba(22, 16, 33, 0.85);
+  border-bottom-color: rgba(236, 72, 153, 0.2);
+}
+
+:global([data-theme='dark']) .quoteBadge {
+  background: rgba(45, 27, 60, 0.75);
+  border-color: rgba(236, 72, 153, 0.35);
+  color: #f472b6;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme='dark']) .quoteBadge:hover {
+  background: rgba(65, 38, 88, 0.9);
+  border-color: #f472b6;
+  color: #fce7f3;
+}
+
+:global([data-theme='dark']) .quoteIcon {
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .iconBtn {
+  background: rgba(45, 27, 60, 0.8);
+  border-color: rgba(236, 72, 153, 0.3);
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .iconBtn:hover {
+  background: rgba(65, 38, 88, 0.9);
+  color: #fb7185;
+  border-color: #f472b6;
+}

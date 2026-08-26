@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Tenor_Sans, Manrope, Marck_Script } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/providers/AuthProvider';
@@ -24,6 +24,15 @@ export const metadata: Metadata = {
   title: 'Love Story 💖',
   description: 'Birthday Gift App for Katia',
 };
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#fff5f8',
+}
 
 export default function RootLayout({
   children,

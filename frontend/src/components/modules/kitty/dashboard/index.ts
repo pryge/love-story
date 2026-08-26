@@ -1,1 +1,1 @@
-export * from './KatiaDashboard/KatiaDashboard';
+export * from './KittyDashboard/KittyDashboard';

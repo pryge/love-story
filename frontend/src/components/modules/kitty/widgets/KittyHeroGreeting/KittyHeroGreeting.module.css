@@ -1,0 +1,107 @@
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.leftGreetingCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 32px 36px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 207, 232, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 12px 35px rgba(236, 72, 153, 0.08);
+  transition: all 0.3s ease;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+}
+
+.pillBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: rgba(251, 207, 232, 0.5);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #9d4c6c;
+}
+
+.badgeIcon {
+  color: #ec4899;
+}
+
+.title {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: #4a2e35;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.scriptAccent {
+  font-family: var(--font-marck-script), cursive;
+  font-size: 38px;
+  color: #ec4899;
+  font-weight: 400;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.rightWidgetsSpace {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:global([data-theme='dark']) .leftGreetingCard {
+  background: rgba(30, 18, 42, 0.7);
+  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme='dark']) .pillBadge {
+  background: rgba(75, 35, 95, 0.5);
+  border-color: rgba(236, 72, 153, 0.4);
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .title {
+  color: #fce7f3;
+}
+
+:global([data-theme='dark']) .scriptAccent {
+  color: #f472b6;
+  text-shadow: 0 0 16px rgba(244, 114, 182, 0.45);
+}
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .leftGreetingCard {
+    padding: 24px 22px;
+    border-radius: 22px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .scriptAccent {
+    font-size: 30px;
+  }
+}

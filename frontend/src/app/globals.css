@@ -20,8 +20,26 @@
   padding: 0;
 }
 
+
+html, body {
+  overscroll-behavior-y: none;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   font-family: var(--font-manrope), sans-serif;
   background-color: #f9fafb;
   color: #111827;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --kitty-bg: #120e1c;
+  --kitty-border: rgba(236, 72, 153, 0.25);
+}
+
+[data-theme='dark'] body {
+  background-color: #110d1b;
+  color: #f3e8ff;
 }
