@@ -36,6 +36,39 @@ async function main() {
     },
   });
 
+  const datesCount = await prisma.importantDate.count();
+  if (datesCount === 0) {
+    await prisma.importantDate.createMany({
+      data: [
+        {
+          title: 'Наша річниця',
+          monthDay: '10-14',
+          isFavorite: true,
+          category: 'Річниця',
+        },
+        {
+          title: 'День народження Каті',
+          monthDay: '03-08',
+          isFavorite: true,
+          category: 'День народження',
+        },
+        {
+          title: 'День першого побачення',
+          monthDay: '01-15',
+          isFavorite: false,
+          category: 'Памʼятна дата',
+        },
+        {
+          title: 'День народження Олега',
+          monthDay: '07-22',
+          isFavorite: false,
+          category: 'День народження',
+        },
+      ],
+    });
+    console.log('🗓️ Initial important dates seeded!');
+  }
+
   console.log('✅ Seed completed successfully!');
   console.log(`👤 Admin created: ${admin.email}`);
   console.log(`💖 Kitty created: ${kitty.email}`);

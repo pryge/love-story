@@ -12,7 +12,7 @@ import { Loader, Sun, Moon, BackgroundEffects } from '@/components/UI';
 export const KittyLoginForm: React.FC = () => {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
-  const { isNightMode, bgVariant, initTheme, toggleTheme } = useThemeStore();
+  const { isNightMode, initTheme, toggleTheme } = useThemeStore();
 
   const [pin, setPin] = useState('');
   const [error, setError] = useState('');
@@ -60,12 +60,16 @@ export const KittyLoginForm: React.FC = () => {
 
   return (
     <main className={styles.container}>
-      <BackgroundEffects variant={bgVariant} />
+      <BackgroundEffects />
+
       {isLoading && <Loader variant="romantic" />}
       <FallingHearts count={20} />
 
       <div className={`${styles.card} ${isShaking ? styles.shake : ''}`}>
-        <h1 className={styles.title}>Наші спогади під замком 🔒</h1>
+        <h1 className={styles.title}>
+          <span>Наші спогади під замком</span>
+          <span className={styles.lockIcon}>🔒</span>
+        </h1>
         <p className={styles.subtitle}>Введи наш 4-значний секретний PIN-код</p>
 
         <div className={styles.dotsContainer}>
@@ -104,7 +108,6 @@ export const KittyLoginForm: React.FC = () => {
             {isNightMode ? <Sun size={22} /> : <Moon size={22} />}
           </button>
 
-
           <button
             type="button"
             className={styles.keyButton}
@@ -127,4 +130,3 @@ export const KittyLoginForm: React.FC = () => {
     </main>
   );
 };
-

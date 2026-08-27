@@ -8,21 +8,21 @@
   height: 100dvh;
   width: 100%;
   padding: 20px 16px;
-  background: linear-gradient(135deg, #fff7fa 0%, #fff0f5 50%, #ffe6ee 100%);
+  background: var(--kitty-page-bg);
   position: relative;
   overflow: hidden;
   touch-action: manipulation;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--kitty-card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 36px;
   padding: 36px 24px;
   max-width: 400px;
   width: 100%;
-  box-shadow: 0 25px 70px rgba(214, 51, 132, 0.08), 0 4px 20px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--kitty-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,19 +42,30 @@
 
 .title {
   font-family: var(--font-tenor-sans), sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 400;
-  color: #3b212b;
+  color: var(--kitty-text);
   margin-bottom: 8px;
   text-align: center;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
+.lockIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
 .subtitle {
   font-family: var(--font-manrope), sans-serif;
   font-size: 14px;
-  color: #8c7b83;
+  color: var(--kitty-text-muted);
   margin-bottom: 24px;
   text-align: center;
 }
@@ -69,22 +80,22 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 2px solid #e8cad4;
+  border: 2px solid var(--kitty-card-border);
   background: transparent;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dotFilled {
-  border-color: #b8527a;
-  background: #b8527a;
+  border-color: var(--kitty-pink);
+  background: var(--kitty-pink);
   transform: scale(1.15);
   box-shadow: 0 0 12px rgba(184, 82, 122, 0.4);
 }
 
 .hintCard {
-  background: #fff0f5;
-  border: 1px solid #ffd6e5;
-  color: #b8527a;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  color: var(--kitty-pink);
   padding: 10px 18px;
   border-radius: 50px;
   font-size: 13px;
@@ -106,8 +117,8 @@
   height: 60px;
   border-radius: 20px;
   border: none;
-  background: #fdf6f8;
-  color: #3b212b;
+  background: var(--kitty-accent-bg);
+  color: var(--kitty-text);
   font-family: var(--font-manrope), sans-serif;
   font-size: 22px;
   font-weight: 600;
@@ -122,76 +133,22 @@
 
 .keyButton:active {
   transform: scale(0.92);
-  background: #f5e4ea;
 }
 
 .themeToggleBtn {
-  color: #db2777;
-  background: #fdf2f8;
+  color: var(--kitty-pink);
+  background: var(--kitty-accent-bg);
 }
 
 .themeToggleBtn:hover {
-  background: #fce7f3;
+  background: var(--kitty-accent-border);
 }
 
 .footerNote {
   font-family: var(--font-marck-script), cursive;
   font-size: 18px;
-  color: #b8527a;
+  color: var(--kitty-pink);
   margin-top: 8px;
-}
-
-/* --- ТЕМНА ТЕМА --- */
-:global([data-theme='dark']) .container {
-  background: linear-gradient(135deg, #181324 0%, #110d1b 50%, #1f1127 100%);
-}
-
-:global([data-theme='dark']) .card {
-  background: rgba(30, 18, 42, 0.88);
-  border: 1px solid rgba(236, 72, 153, 0.25);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-}
-
-:global([data-theme='dark']) .title {
-  color: #fce7f3;
-}
-
-:global([data-theme='dark']) .subtitle {
-  color: #d8b4fe;
-}
-
-:global([data-theme='dark']) .dot {
-  border-color: rgba(236, 72, 153, 0.4);
-}
-
-:global([data-theme='dark']) .dotFilled {
-  border-color: #f472b6;
-  background: #f472b6;
-  box-shadow: 0 0 12px rgba(244, 114, 182, 0.5);
-}
-
-:global([data-theme='dark']) .hintCard {
-  background: rgba(75, 35, 95, 0.4);
-  border-color: rgba(236, 72, 153, 0.35);
-  color: #f472b6;
-}
-
-:global([data-theme='dark']) .keyButton {
-  background: rgba(45, 27, 60, 0.8);
-  color: #fce7f3;
-}
-
-:global([data-theme='dark']) .keyButton:active {
-  background: rgba(75, 40, 100, 0.95);
-}
-
-:global([data-theme='dark']) .themeToggleBtn {
-  background: rgba(65, 35, 85, 0.8);
-  color: #f472b6;
-}
-
-:global([data-theme='dark']) .footerNote {
-  color: #f472b6;
 }
 
 @media (max-width: 480px) {
@@ -201,8 +158,7 @@
   }
 
   .title {
-    font-size: 20px;
-    white-space: nowrap;
+    font-size: 19px;
   }
 
   .keyButton {
@@ -210,5 +166,3 @@
     font-size: 20px;
   }
 }
-
-

@@ -29,4 +29,8 @@ export {
   Plus,
   Trash2,
   Edit,
+  X,
+  Settings,
 } from 'lucide-react';
+
+

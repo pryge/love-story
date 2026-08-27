@@ -31,6 +31,8 @@
 | 4 | 25.08.2026 | Романтичний Вхід v2.0 (iPhone PIN), 404, Falling Hearts, Loader System & Typography | Done ✅ | Frontend, Auth | `frontend/src/components/modules/kitty/auth/KittyLoginForm/KittyLoginForm.tsx` |
 | 5 | 26.08.2026 | Дашборд Каті: Layout v2.0, Modular Architecture, Theme Store & Smooth AnimateIn | Done ✅ | Frontend, Night Mode, Quotes | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
 | 6 | 26.08.2026 | Дашборд Каті v2.0: Віджети, 12-Колонкова Адаптивна Сітка & Dark Mode Login | Done ✅ | Frontend, Timer & Calendar, Quotes, Night Mode, Auth | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
+| 7 | 27.08.2026 | Інтеграція «Наші дати» (Supabase + NestJS API), Таб-Дашборд Адміна, Преміальний Монохром & 2D-Таймлайн | Done ✅ | Backend, Database, Timer & Calendar, Admin Dashboard, Night Mode | `frontend/src/components/modules/kitty/widgets/KittyOurDates/KittyOurDates.tsx` |
+
 
 ---
 
@@ -174,4 +176,46 @@
 - **6. Очищення коду & Усунення SSR Hydration Warnings**:
   - Усунуто Hydration Mismatch у `KittyQuoteCard` через асинхронне встановлення випадкового стану у `useEffect`.
   - Усі файли очищено від зайвих коментарів і перевірено через `npm run lint` (0 помилок).
+
+---
+
+### 🗓️ Сеанс #7 (27.08.2026) — Інтеграція «Наші дати» (Supabase + NestJS API), Таб-Дашборд Адміна, Преміальний Монохром & 2D-Таймлайн
+
+#### ✅ Реалізовано:
+- **1. Supabase Database & NestJS Backend REST API**:
+  - `ImportantDate` модель додано в Prisma Schema та синхронізовано з PostgreSQL у Supabase (`npx prisma db push`).
+  - Початкові важливі дати додано в `prisma/seed.ts` та заселено в базу даних.
+  - Створено модульний NestJS сервіс та контролер `backend/src/dates/` з підтримкою CRUD: `GET /dates`, `POST /dates`, `PUT /dates/:id`, `DELETE /dates/:id`.
+- **2. Фронтенд Сервісний Шар (`dates.service.ts`)**:
+  - Створено `frontend/src/services/dates.service.ts` для взаємодії з REST API бекенду з фолбеком на початкові дати.
+- **3. Редизайн Панелі Адміністратора (`AdminLayout` & `AdminSidebar`)**:
+  - Створено повноекранний лейаут Адмінки з фіксованим лівим сайдбаром (240px) та таб-навігацією:
+    - 🗓️ **Наші дати**
+    - 💬 **Цитати**
+    - 🎁 **Wishlist**
+    - 📜 **Гріхомір**
+    - ⚙️ **Налаштування**
+  - Витончена верхня шапка `AdminHeader` із вітанням *"Вітаємо, Admin 👋"*, бейджем ролі `ADMIN`, перемикачем теми та кнопкою виходу (`LogOut`).
+- **4. Віджет Керування Датами в Адмінці (`AdminDatesWidget`)**:
+  - Зручні селектори місяця (`01-12`) та дня (`01-31`) замість ручного тексту.
+  - Категорії ("Річниця 💖", "День народження 🎂", "Памʼятна дата ⭐️", "Поїздка ✈️", "Сюрприз 🎁") та тумблер обраного (`isFavorite`).
+  - Режим редагування (кнопка ✏️ `Edit`): завантажує дані у форму та зберігає зміни в Supabase через `PUT /dates/:id`.
+  - Кнопка видалення `Trash2`.
+- **5. Централізована Система Токенів Дизайну (`globals.css`)**:
+  - Створено токени `--admin-*` (Преміальний монохром / теплі еспресо-іворі тони) та `--kitty-*` у `globals.css`.
+  - Переведено всі CSS-модулі на CSS-змінні для швидкої зміни всієї палітри з одного файлу.
+- **6. Інтерактивний Віджет «Наші дати» Каті (`KittyOurDates`)**:
+  - Згорнутий стан: 2 дати, без скролу (`overflow: hidden`), без ліній.
+  - Розгорнутий стан: 2D/3D піднімання картки вгору (`.cardElevated`, `transform: translateY(-6px) scale(1.02)`) без зсуву інших віджетів на сітці.
+  - Висота обмежена **рівно під 2.5 дати (`max-height: 238px`)** із тонким рожевим скроллбаром.
+  - Єдина суцільна вертикальна хронологічна вісь (`.timelineLine`, `z-index: 25`), яка з'єднує значки дат у хронологічну лінію кохання.
+- **7. Очищення коду та повне тестування**:
+  - Видалено всі коментарі з усіх створених і змінених файлів.
+  - Перевірено `npm run lint` та `npm run build` у `frontend` та `backend` (0 помилок).
+- **8. iOS Safe Area, Фікс Зміщення Замка PIN та Шовкова Плавність Тем**:
+  - Налаштовано `themeColor` у `layout.tsx` для автоматичної адаптації верхівки iOS Status Bar під кольори денної (`#fff7fa`) та темної (`#110d1b`) тем.
+  - Усунуто зміщення іконки замка `🔒` та тексту на формі PIN-входу `KittyLoginForm` при швидкому перемиканні теми.
+  - Впроваджено глобальні переходи `transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease` у `globals.css` для шовкової зміни кольорів по всьому сайту.
+
+
 

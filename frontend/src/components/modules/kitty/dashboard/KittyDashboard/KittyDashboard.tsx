@@ -8,17 +8,15 @@ import {
   KittyQuoteCard,
   TogetherTimer,
   KittyPlaceholderCard,
+  KittyOurDates,
 } from '../../widgets';
 import { BackgroundEffects, AnimateIn } from '@/components/UI';
-import { useKittyHeader } from '../../layout/KittyHeader/useKittyHeader';
 
 export const KittyDashboard: React.FC = () => {
-  const { bgVariant, toggleBgVariant } = useKittyHeader();
-
   return (
     <div className={styles.pageLayout}>
-      <BackgroundEffects variant={bgVariant} />
-      <KittyHeader bgVariant={bgVariant} onToggleBgVariant={toggleBgVariant} />
+      <BackgroundEffects />
+      <KittyHeader />
 
       <main className={styles.mainContent}>
         <div className={styles.widgetsGrid}>
@@ -48,11 +46,12 @@ export const KittyDashboard: React.FC = () => {
 
           <div className={styles.colSpan12}>
             <AnimateIn direction="up" delay={0.35}>
-              <KittyPlaceholderCard span="1/2" title="Віджет 1/2 ✨" subtitle="Нижня сітка віджетів" />
+              <KittyOurDates />
             </AnimateIn>
           </div>
         </div>
       </main>
+
 
 
 

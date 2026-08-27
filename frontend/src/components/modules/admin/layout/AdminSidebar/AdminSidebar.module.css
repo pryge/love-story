@@ -1,0 +1,98 @@
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: var(--admin-sidebar-bg);
+  border-right: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.brand {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  font-family: var(--font-tenor-sans), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--admin-text);
+  border-bottom: 1px solid var(--admin-border);
+  letter-spacing: 0.02em;
+}
+
+.brandIcon {
+  color: var(--admin-text);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 12px;
+  flex: 1;
+}
+
+.navSectionTitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--admin-text-muted);
+  letter-spacing: 0.08em;
+  padding: 0 12px;
+  margin-bottom: 6px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--admin-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  background: var(--admin-row-hover);
+  color: var(--admin-text);
+}
+
+.active {
+  background: var(--admin-btn-bg);
+  color: var(--admin-btn-text);
+  font-weight: 600;
+}
+
+.active:hover {
+  background: var(--admin-btn-hover);
+  color: var(--admin-btn-text);
+}
+
+.itemIcon {
+  flex-shrink: 0;
+}
+
+.footer {
+  padding: 16px;
+  border-top: 1px solid var(--admin-border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

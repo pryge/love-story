@@ -1,0 +1,258 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 28px;
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 24px;
+  box-shadow: var(--kitty-shadow);
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.35s cubic-bezier(0.34, 1.35, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+.cardElevated {
+  z-index: 50;
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(214, 51, 132, 0.18), 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--kitty-pink);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--kitty-text);
+}
+
+.titleIcon {
+  color: var(--kitty-pink);
+}
+
+.countBadge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--kitty-pink);
+}
+
+.allBtn {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kitty-pink);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.allBtn:hover {
+  background: var(--kitty-accent-bg);
+}
+
+.allBtnActive {
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+}
+
+.datesList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+
+.collapsedList {
+  overflow: hidden;
+  padding: 4px;
+}
+
+.expandedList {
+  position: relative;
+  max-height: 238px;
+  overflow-y: auto;
+  padding: 6px 4px;
+  animation: fadeInList 0.3s ease-out;
+}
+
+.expandedList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.expandedList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.expandedList::-webkit-scrollbar-thumb {
+  background: rgba(244, 114, 182, 0.4);
+  border-radius: 4px;
+}
+
+.expandedList::-webkit-scrollbar-thumb:hover {
+  background: var(--kitty-pink);
+}
+
+.dateItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.dateItem:hover {
+  border-color: var(--kitty-pink);
+  background: var(--kitty-card-bg);
+  box-shadow: 0 4px 16px rgba(214, 51, 132, 0.12);
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
+
+.badgeContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dateBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--kitty-card-bg);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 14px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 48px;
+  height: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: linear-gradient(180deg, var(--kitty-pink) 0%, rgba(244, 114, 182, 0.5) 100%);
+  z-index: 25;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+
+.badgeDay {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--kitty-pink);
+  line-height: 1;
+}
+
+.badgeMonth {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--kitty-text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.itemTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--kitty-text);
+}
+
+.itemCountdown {
+  font-size: 13px;
+  color: var(--kitty-text-muted);
+}
+
+.starIcon {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.modalTag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  background: var(--kitty-card-bg);
+  color: var(--kitty-pink);
+  border: 1px solid var(--kitty-accent-border);
+  border-radius: 8px;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+@keyframes fadeInList {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+  .dateItem {
+    padding: 10px 12px;
+  }
+
+  .dateBadge {
+    width: 42px;
+    height: 42px;
+  }
+
+  .badgeDay {
+    font-size: 14px;
+  }
+}

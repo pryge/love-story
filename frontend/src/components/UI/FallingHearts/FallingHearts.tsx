@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart } from '@/components/UI';
 import styles from './FallingHearts.module.css';
 
@@ -41,9 +41,17 @@ const generateHearts = (count: number): HeartProps[] => {
 };
 
 export const FallingHearts: React.FC<{ count?: number }> = ({ count = 20 }) => {
-  const [hearts] = useState(() => generateHearts(count));
+  const [hearts, setHearts] = useState<HeartProps[]>([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHearts(generateHearts(count));
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [count]);
 
   if (hearts.length === 0) return null;
+
 
   return (
     <div className={styles.container}>

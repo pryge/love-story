@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import styles from './BackgroundEffects.module.css';
 
-export type BgVariant = 'aurora' | 'sparkles';
+export type BgVariant = 'sparkles';
 
 interface BackgroundEffectsProps {
   variant?: BgVariant;
@@ -35,38 +36,35 @@ const generateSparkles = (count: number = 25): SparkleParticle[] => {
   });
 };
 
+export const BackgroundEffects: React.FC<BackgroundEffectsProps> = () => {
+  const [sparkles, setSparkles] = useState<SparkleParticle[]>([]);
 
-export const BackgroundEffects: React.FC<BackgroundEffectsProps> = ({
-  variant = 'aurora',
-}) => {
-  const [sparkles] = useState(() => generateSparkles(25));
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSparkles(generateSparkles(25));
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className={styles.container} aria-hidden="true">
-      {variant === 'aurora' ? (
-        <div className={styles.auroraWrapper}>
-          <div className={styles.auroraBlob1} />
-          <div className={styles.auroraBlob2} />
-          <div className={styles.auroraBlob3} />
-        </div>
-      ) : (
-        <div className={styles.sparklesWrapper}>
-          {sparkles.map((s) => (
-            <div
-              key={s.id}
-              className={styles.sparkleItem}
-              style={{
-                left: `${s.left}%`,
-                width: `${s.size}px`,
-                height: `${s.size}px`,
-                animationDuration: `${s.duration}s, 2s`,
-                animationDelay: `${s.delay}s, 0s`,
-                ['--sparkle-opacity' as string]: s.opacity,
-              }}
-            />
-          ))}
-        </div>
-      )}
+      <div className={styles.sparklesWrapper}>
+        {sparkles.map((s) => (
+          <div
+            key={s.id}
+            className={styles.sparkleItem}
+            style={{
+              left: `${s.left}%`,
+              width: `${s.size}px`,
+              height: `${s.size}px`,
+              animationDuration: `${s.duration}s, 2s`,
+              animationDelay: `${s.delay}s, 0s`,
+              ['--sparkle-opacity' as string]: s.opacity,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };
+

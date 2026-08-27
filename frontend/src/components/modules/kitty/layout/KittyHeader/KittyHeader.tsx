@@ -1,24 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Star, Moon, Sun, LogOut } from '@/components/UI';
+import { Sparkles, Moon, Sun, LogOut } from '@/components/UI';
 import { useKittyHeader } from './useKittyHeader';
 import styles from './KittyHeader.module.css';
 
-export const KittyHeader: React.FC<{
-  bgVariant?: 'aurora' | 'sparkles';
-  onToggleBgVariant?: () => void;
-}> = ({ bgVariant: externalBg, onToggleBgVariant }) => {
-  const {
-    isNightMode,
-    bgVariant: internalBg,
-    handleLogout,
-    toggleTheme,
-    toggleBgVariant: internalToggleBg,
-  } = useKittyHeader();
-
-  const currentBg = externalBg ?? internalBg;
-  const handleToggleBg = onToggleBgVariant ?? internalToggleBg;
+export const KittyHeader: React.FC = () => {
+  const { isNightMode, handleLogout, toggleTheme } = useKittyHeader();
 
   return (
     <header className={styles.header}>
@@ -31,19 +19,6 @@ export const KittyHeader: React.FC<{
         </div>
 
         <div className={styles.controlsSection}>
-          <button
-            type="button"
-            className={styles.iconBtn}
-            onClick={handleToggleBg}
-            title={
-              currentBg === 'aurora'
-                ? 'Змінити фон на Іскорки'
-                : 'Змінити фон на Aurora Градієнт'
-            }
-          >
-            {currentBg === 'aurora' ? <Star size={18} /> : <Sparkles size={18} />}
-          </button>
-
           <button
             type="button"
             className={styles.iconBtn}
@@ -66,4 +41,5 @@ export const KittyHeader: React.FC<{
     </header>
   );
 };
+
 

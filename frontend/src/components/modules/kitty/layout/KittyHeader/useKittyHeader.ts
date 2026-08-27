@@ -6,8 +6,7 @@ import { useThemeStore } from '@/store/useThemeStore';
 export const useKittyHeader = () => {
   const router = useRouter();
   const logout = useAuthStore((state) => state.logout);
-  const { isNightMode, bgVariant, initTheme, toggleTheme, toggleBgVariant } =
-    useThemeStore();
+  const { isNightMode, initTheme, toggleTheme } = useThemeStore();
 
   useEffect(() => {
     initTheme('kitty');
@@ -20,10 +19,9 @@ export const useKittyHeader = () => {
 
   return {
     isNightMode,
-    bgVariant,
     handleLogout,
     toggleTheme,
-    toggleBgVariant,
   };
 };
+
 
