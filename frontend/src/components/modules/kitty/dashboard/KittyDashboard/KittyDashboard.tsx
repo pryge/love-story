@@ -8,7 +8,6 @@ import {
   KittyQuoteCard,
   TogetherTimer,
   KittyPlaceholderCard,
-  KittyOurDates,
 } from '../../widgets';
 import { BackgroundEffects, AnimateIn } from '@/components/UI';
 
@@ -46,14 +45,15 @@ export const KittyDashboard: React.FC = () => {
 
           <div className={styles.colSpan12}>
             <AnimateIn direction="up" delay={0.35}>
-              <KittyOurDates />
+              <KittyPlaceholderCard
+                span="1/2"
+                title="Наші дати 🗓️"
+                subtitle="Готуємо новий унікальний дизайн ✨"
+              />
             </AnimateIn>
           </div>
         </div>
       </main>
-
-
-
 
       <AnimateIn direction="fade" delay={0.5}>
         <KittyFooter />
@@ -61,4 +61,3 @@ export const KittyDashboard: React.FC = () => {
     </div>
   );
 };
-
