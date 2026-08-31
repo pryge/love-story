@@ -1,0 +1,225 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 24px;
+  box-shadow: var(--kitty-shadow);
+  width: 100%;
+  transition: all 0.35s ease-in-out;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  color: var(--kitty-pink);
+}
+
+.title {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--kitty-text);
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  color: var(--kitty-pink);
+}
+
+.addToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  color: var(--kitty-pink);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addToggleBtn:hover {
+  background: var(--kitty-pink);
+  color: #ffffff;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  border-radius: 18px;
+}
+
+.formTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kitty-text);
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .inputRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--kitty-card-border);
+  background: var(--kitty-card-bg);
+  color: var(--kitty-text);
+  font-size: 13px;
+  outline: none;
+}
+
+.submitAddBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--kitty-pink);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.emptyEmoji {
+  font-size: 32px;
+}
+
+.emptyText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kitty-text);
+}
+
+.emptySubtext {
+  font-size: 12px;
+  color: var(--kitty-text-muted);
+}
+
+.sinsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sinItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  border-radius: 18px;
+  transition: transform 0.2s ease;
+}
+
+.sinItem:hover {
+  transform: translateY(-1px);
+}
+
+.sinInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sinTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kitty-text);
+}
+
+.sinSeverity {
+  font-size: 11px;
+  color: var(--kitty-text-muted);
+}
+
+.hintBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--kitty-pink);
+}
+
+.forgiveBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.forgiveBtn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.35);
+}

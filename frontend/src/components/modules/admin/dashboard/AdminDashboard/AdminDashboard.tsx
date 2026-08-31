@@ -4,6 +4,7 @@ import React from 'react';
 import { AdminLayout } from '../../layout';
 import { AdminDatesWidget } from '../../widgets/AdminDatesWidget';
 import { AdminQuotesWidget } from '../../widgets/AdminQuotesWidget';
+import { AdminOverviewWidget } from '../../widgets/AdminOverviewWidget';
 import styles from './AdminDashboard.module.css';
 
 export const AdminDashboard: React.FC = () => {
@@ -11,6 +12,8 @@ export const AdminDashboard: React.FC = () => {
     <AdminLayout>
       {(activeTab) => {
         switch (activeTab) {
+          case 'dashboard':
+            return <AdminOverviewWidget />;
           case 'dates':
             return <AdminDatesWidget />;
           case 'quotes':
@@ -20,13 +23,6 @@ export const AdminDashboard: React.FC = () => {
               <div className={styles.cardPlaceholder}>
                 <h2 className={styles.title}>🎁 Керування Wishlist</h2>
                 <p>Тут можна буде додавати нові бажання для Каті та помічати сюрпризи.</p>
-              </div>
-            );
-          case 'sins':
-            return (
-              <div className={styles.cardPlaceholder}>
-                <h2 className={styles.title}>📜 Керування Гріхоміром</h2>
-                <p>Тут можна буде відстежувати та керувати вибаченнями.</p>
               </div>
             );
           case 'settings':

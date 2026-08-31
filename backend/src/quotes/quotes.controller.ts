@@ -7,7 +7,8 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
-import { QuotesService, CreateQuoteDto } from './quotes.service';
+import { QuotesService } from './quotes.service';
+import { CreateQuoteDto } from './dto/quotes.dto';
 
 @Controller('quotes')
 export class QuotesController {

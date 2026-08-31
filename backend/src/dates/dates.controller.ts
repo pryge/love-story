@@ -7,7 +7,8 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
-import { DatesService, CreateImportantDateDto } from './dates.service';
+import { DatesService } from './dates.service';
+import { CreateImportantDateDto } from './dto/dates.dto';
 
 @Controller('dates')
 export class DatesController {

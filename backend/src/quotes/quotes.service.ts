@@ -1,9 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-
-export class CreateQuoteDto {
-  text: string;
-}
+import { CreateQuoteDto } from './dto/quotes.dto';
 
 @Injectable()
 export class QuotesService {

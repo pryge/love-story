@@ -7,7 +7,9 @@ import {
   KittyHeroGreeting,
   KittyQuoteCard,
   TogetherTimer,
+  KittySinometer,
   KittyPlaceholderCard,
+  KittyStatsWidget,
 } from '../../widgets';
 import { BackgroundEffects, AnimateIn } from '@/components/UI';
 
@@ -27,7 +29,7 @@ export const KittyDashboard: React.FC = () => {
 
           <div className={styles.colSpan13}>
             <AnimateIn direction="up" delay={0.15}>
-              <KittyPlaceholderCard span="1/3" title="Віджет 1/3 ✨" subtitle="Праворуч від привітання" />
+              <KittyStatsWidget />
             </AnimateIn>
           </div>
 
@@ -50,6 +52,12 @@ export const KittyDashboard: React.FC = () => {
                 title="Наші дати 🗓️"
                 subtitle="Готуємо новий унікальний дизайн ✨"
               />
+            </AnimateIn>
+          </div>
+
+          <div className={styles.colSpan12}>
+            <AnimateIn direction="up" delay={0.4}>
+              <KittySinometer />
             </AnimateIn>
           </div>
         </div>

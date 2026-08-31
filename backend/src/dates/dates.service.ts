@@ -1,12 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-
-export class CreateImportantDateDto {
-  title: string;
-  monthDay: string;
-  isFavorite?: boolean;
-  category?: string;
-}
+import { CreateImportantDateDto } from './dto/dates.dto';
 
 @Injectable()
 export class DatesService {

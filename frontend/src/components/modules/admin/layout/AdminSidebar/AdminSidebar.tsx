@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Crown, FileText, Gift, Heart, Settings } from '@/components/UI';
+import { Calendar, Crown, FileText, Gift, LayoutDashboard, Settings } from '@/components/UI';
 import styles from './AdminSidebar.module.css';
 
-export type AdminTab = 'dates' | 'quotes' | 'wishlist' | 'sins' | 'settings';
+export type AdminTab = 'dashboard' | 'dates' | 'quotes' | 'wishlist' | 'settings';
 
 interface AdminSidebarProps {
   activeTab: AdminTab;
@@ -16,10 +16,10 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   onTabChange,
 }) => {
   const navItems: { id: AdminTab; label: string; icon: React.ReactNode }[] = [
+    { id: 'dashboard', label: 'Головна', icon: <LayoutDashboard size={18} /> },
     { id: 'dates', label: 'Наші дати', icon: <Calendar size={18} /> },
     { id: 'quotes', label: 'Цитати', icon: <FileText size={18} /> },
     { id: 'wishlist', label: 'Wishlist', icon: <Gift size={18} /> },
-    { id: 'sins', label: 'Гріхомір', icon: <Heart size={18} /> },
     { id: 'settings', label: 'Налаштування', icon: <Settings size={18} /> },
   ];
 

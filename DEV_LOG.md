@@ -33,6 +33,7 @@
 | 6 | 26.08.2026 | Дашборд Каті v2.0: Віджети, 12-Колонкова Адаптивна Сітка & Dark Mode Login | Done ✅ | Frontend, Timer & Calendar, Quotes, Night Mode, Auth | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
 | 7 | 27.08.2026 | Інтеграція «Наші дати» (Supabase + NestJS API), Таб-Дашборд Адміна, Преміальний Монохром & 2D-Таймлайн | Done ✅ | Backend, Database, Timer & Calendar, Admin Dashboard, Night Mode | `frontend/src/components/modules/kitty/widgets/KittyOurDates/KittyOurDates.tsx` |
 | 8 | 31.08.2026 | Плавна зміна теми без мерехтіння & Full-Stack Модуль Цитати (Supabase DB + NestJS API + Admin Widget) | Done ✅ | Frontend, Backend, Database, Quotes, Night Mode, Admin Dashboard | `frontend/src/services/quotes.service.ts` |
+| 9 | 31.08.2026 | Full-Stack Модуль Гріхоміра (Sin-o-meter), Zod DTOs, Real-Time Zustand Store & Redesigned Admin Overview | Done ✅ | Frontend, Backend, Database, Sin-o-meter, Admin Dashboard | `frontend/src/store/useSinsStore.ts` |
 
 
 ---
@@ -237,6 +238,29 @@
 - **5. Динамічний Віджет Каті (`KittyQuoteCard`)**:
   - Віджет `KittyQuoteCard` переведено на динамічне завантаження з API та випадковий вибір цитати з бази даних.
   - Видалено застарілий статичний масив `kittyQuoteCard.constants.ts`.
+
+---
+
+### 🗓️ Сеанс #9 (31.08.2026) — Full-Stack Модуль Гріхоміра (Sin-o-meter), Zod DTOs, Real-Time Zustand Store & Redesigned Admin Overview
+
+#### ✅ Реалізовано:
+- **1. Supabase Database & NestJS Backend REST API для Гріхоміра**:
+  - `Sin` модель додано у `schema.prisma` (`title`, `severity`, `hint`, `isForgiven`, `createdAt`, `updatedAt`) та синхроновано через `npx prisma db push`.
+  - Початкові провини заселено в Supabase через `npx prisma db seed`.
+  - Створено модульний `SinsModule` (`backend/src/sins/`) з підтримкою CRUD та ендпоінту `PUT /sins/:id/forgive`.
+- **2. Zod DTO Рефакторинг на Бекенді**:
+  - Усі DTO впорядковано в окремі папки `dto/` з Zod-схемами (`sins/dto/sins.dto.ts`, `dates/dto/dates.dto.ts`, `quotes/dto/quotes.dto.ts`).
+- **3. Реактивне Zustand Сховище (`useSinsStore.ts`)**:
+  - Створено `frontend/src/store/useSinsStore.ts` для миттєвої реакт-синхронізації провин між віджетами без перезавантаження сторінки.
+- **4. Оновлений Віджет Каті «Гріхомір» (`KittySinometer`)**:
+  - Катя додає нові косяки Олега, зазначає підказку (*"💡 Чим загладити: Купити шоколадку 🍫"*), і натискає **«Простити ♥»** (запускає салют із падаючих сердечок).
+- **5. Оновлений Індикатор Стан Гріхоміра (`KittyStatsWidget`)**:
+  - 3-рядкова шкала-полоска з динамічною зміною кольорів (🟢 Зелений для 0, 🟡 Жовтий для 1-2, 🔴 Червоний для 3+ active sins).
+  - Слоти 2 та 3 зарезервовано під майбутню статистику.
+- **6. Нова Головна Адмін-Панель (`AdminOverviewWidget` & `AdminSidebar`)**:
+  - Нова вкладка «📊 Головна» як дефолтна сторінка входа.
+  - Вбудована стрічка Гріхоміра `AdminSinsWidget` із фіксованою висотою, кастомним скролом, фільтрами (`Всі`, `Активні ⏳`, `Пробачені ♥`) та авто-сортуванням (пробачені внизу).
+
 
 
 

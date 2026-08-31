@@ -32,6 +32,7 @@ export {
   X,
   Settings,
   MessageSquare,
+  LayoutDashboard,
 } from 'lucide-react';
 
 

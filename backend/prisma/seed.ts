@@ -91,7 +91,7 @@ async function main() {
         { text: 'Ти — моє солоденьке щастя 🍬' },
         { text: 'Моя найулюбленіша дівчинка на землі 👑' },
         { text: 'Все, що мені потрібно — це ти поруч 💕' },
-        { text: 'Ти перетворюєш ззвичайні дні у магію 🪄' },
+        { text: 'Ти перетворюєш звичайні дні у магію 🪄' },
         { text: 'Кожна хвилина з тобою — безцінна ⏳' },
         { text: 'Ти — мій найкрутіший подарунок долі 🎁' },
         { text: 'Завжди памʼятай, як сильно я тебе кохаю 💖' },
@@ -124,6 +124,30 @@ async function main() {
       ],
     });
     console.log('💬 Initial quotes seeded!');
+  }
+
+  const sinsCount = await prisma.sin.count();
+  if (sinsCount === 0) {
+    await prisma.sin.createMany({
+      data: [
+        {
+          title: 'Забув купити смачненьке до чаю 🍪',
+          severity: 'Маленький грішок 🐣',
+          isForgiven: false,
+        },
+        {
+          title: 'Запізнився на 10 хвилин ⏰',
+          severity: 'Середня провина 🙈',
+          isForgiven: false,
+        },
+        {
+          title: 'Не поцілував зранку перед виходом 💋',
+          severity: 'Загладити провину смачненьким 🍰',
+          isForgiven: false,
+        },
+      ],
+    });
+    console.log('📜 Initial sins seeded!');
   }
 
   console.log('✅ Seed completed successfully!');

@@ -10,7 +10,7 @@ interface AdminLayoutProps {
 }
 
 export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
-  const [activeTab, setActiveTab] = useState<AdminTab>('dates');
+  const [activeTab, setActiveTab] = useState<AdminTab>('dashboard');
 
   return (
     <div className={styles.wrapper}>
