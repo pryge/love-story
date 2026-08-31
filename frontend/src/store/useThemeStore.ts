@@ -24,7 +24,9 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       : scope === 'admin';
 
     const themeValue = isDark ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', themeValue);
+    if (document.documentElement.getAttribute('data-theme') !== themeValue) {
+      document.documentElement.setAttribute('data-theme', themeValue);
+    }
 
     set({ isNightMode: isDark, scope });
   },

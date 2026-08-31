@@ -1,0 +1,173 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+
+.headerIcon {
+  color: var(--pink-color);
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.formTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--admin-border);
+  background: var(--admin-row-bg);
+  color: var(--admin-text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--pink-color);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+}
+
+.buttonRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: var(--admin-btn-bg);
+  color: var(--admin-btn-text);
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+  background: var(--admin-btn-hover);
+  transform: translateY(-1px);
+}
+
+.cancelBtn {
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--admin-text-muted);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.listHeader {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  margin-top: 8px;
+}
+
+.quotesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quoteRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: 14px;
+  transition: background 0.2s ease;
+}
+
+.quoteRow:hover {
+  background: var(--admin-row-hover);
+}
+
+.quoteText {
+  font-size: 14px;
+  color: var(--admin-text);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.editBtn,
+.deleteBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--admin-border);
+  background: var(--admin-row-bg);
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editBtn:hover {
+  color: var(--admin-text);
+  border-color: var(--admin-text);
+}
+
+.deleteBtn:hover {
+  color: #ef4444;
+  border-color: #fca5a5;
+  background: #fef2f2;
+}

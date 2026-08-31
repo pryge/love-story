@@ -3,6 +3,7 @@
 import React from 'react';
 import { AdminLayout } from '../../layout';
 import { AdminDatesWidget } from '../../widgets/AdminDatesWidget';
+import { AdminQuotesWidget } from '../../widgets/AdminQuotesWidget';
 import styles from './AdminDashboard.module.css';
 
 export const AdminDashboard: React.FC = () => {
@@ -13,12 +14,7 @@ export const AdminDashboard: React.FC = () => {
           case 'dates':
             return <AdminDatesWidget />;
           case 'quotes':
-            return (
-              <div className={styles.cardPlaceholder}>
-                <h2 className={styles.title}>💬 Керування Цитатами</h2>
-                <p>Тут зʼявиться можливість додавати та редагувати цитати кохання.</p>
-              </div>
-            );
+            return <AdminQuotesWidget />;
           case 'wishlist':
             return (
               <div className={styles.cardPlaceholder}>

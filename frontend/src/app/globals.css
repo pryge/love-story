@@ -9,7 +9,9 @@
   --error-bg: #fee2e2;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --kitty-page-bg: linear-gradient(135deg, #fff7fa 0%, #fff0f5 50%, #ffe6ee 100%);
+  --kitty-page-bg-light: linear-gradient(135deg, #fff7fa 0%, #fff0f5 50%, #ffe6ee 100%);
+  --kitty-page-bg-dark: linear-gradient(135deg, #181324 0%, #110d1b 50%, #1f1127 100%);
+
   --kitty-card-bg: rgba(255, 255, 255, 0.92);
   --kitty-card-border: rgba(251, 207, 232, 0.8);
   --kitty-text: #3b212b;
@@ -40,30 +42,66 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: background-color 0.35s ease,
-              color 0.35s ease,
-              border-color 0.35s ease,
-              box-shadow 0.35s ease,
-              fill 0.35s ease,
-              stroke 0.35s ease;
+}
+
+body,
+header,
+footer,
+main,
+nav,
+section,
+article,
+div,
+button,
+input,
+textarea,
+select,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+svg,
+path {
+  transition: background-color 0.35s ease-in-out,
+              color 0.35s ease-in-out,
+              border-color 0.35s ease-in-out,
+              box-shadow 0.35s ease-in-out,
+              fill 0.35s ease-in-out,
+              stroke 0.35s ease-in-out;
 }
 
 html, body {
   overscroll-behavior-y: none;
   touch-action: pan-x pan-y;
   -webkit-overflow-scrolling: touch;
-  background: var(--kitty-page-bg);
   min-height: 100vh;
 }
 
 body {
   font-family: var(--font-manrope), sans-serif;
   color: var(--kitty-text);
-  transition: background 0.35s ease, color 0.35s ease;
+  background-color: #fff0f5;
+  background-image: var(--kitty-page-bg-light);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: var(--kitty-page-bg-dark);
+  opacity: 0;
+  transition: opacity 0.35s ease-in-out;
+  pointer-events: none;
+  z-index: -1;
 }
 
 [data-theme='dark'] {
-  --kitty-page-bg: linear-gradient(135deg, #181324 0%, #110d1b 50%, #1f1127 100%);
   --kitty-card-bg: rgba(30, 18, 42, 0.88);
   --kitty-card-border: rgba(236, 72, 153, 0.25);
   --kitty-text: #fce7f3;
@@ -91,6 +129,10 @@ body {
 }
 
 [data-theme='dark'] body {
-  background: var(--kitty-page-bg);
+  background-color: #110d1b;
   color: var(--kitty-text);
+}
+
+[data-theme='dark'] body::before {
+  opacity: 1;
 }

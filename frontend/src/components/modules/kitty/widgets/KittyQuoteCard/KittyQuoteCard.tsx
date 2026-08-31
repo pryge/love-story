@@ -1,26 +1,43 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { RefreshCw } from '@/components/UI';
 import styles from './KittyQuoteCard.module.css';
-import { getRandomQuote, LOVE_QUOTES } from './kittyQuoteCard.constants';
+import { quotesService, Quote } from '@/services/quotes.service';
+
+const FALLBACK_QUOTE = 'Ти — мій найулюбленіший простір 🌸';
 
 export const KittyQuoteCard: React.FC = () => {
-  const [quote, setQuote] = useState(() => LOVE_QUOTES[0]);
+  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [currentQuoteText, setCurrentQuoteText] = useState(FALLBACK_QUOTE);
   const [isChanging, setIsChanging] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setQuote(getRandomQuote());
-    }, 0);
-    return () => clearTimeout(timer);
+  const getRandomText = useCallback((list: Quote[], currentText?: string): string => {
+    if (list.length === 0) return FALLBACK_QUOTE;
+    const filtered = list.filter((q) => q.text !== currentText);
+    if (filtered.length === 0) return list[0].text;
+    const randomIndex = Math.floor(Math.random() * filtered.length);
+    return filtered[randomIndex].text;
   }, []);
 
+  useEffect(() => {
+    let isMounted = true;
+    quotesService.getQuotes().then((data) => {
+      if (isMounted && data.length > 0) {
+        setQuotes(data);
+        setCurrentQuoteText(getRandomText(data));
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [getRandomText]);
 
   const handleNextQuote = () => {
+    if (quotes.length === 0) return;
     setIsChanging(true);
     setTimeout(() => {
-      setQuote(getRandomQuote(quote));
+      setCurrentQuoteText(getRandomText(quotes, currentQuoteText));
       setIsChanging(false);
     }, 200);
   };
@@ -31,7 +48,7 @@ export const KittyQuoteCard: React.FC = () => {
 
       <div className={styles.quoteContent}>
         <p className={`${styles.quoteText} ${isChanging ? styles.changing : ''}`}>
-          {quote}
+          {currentQuoteText}
         </p>
       </div>
 

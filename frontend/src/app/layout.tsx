@@ -46,7 +46,25 @@ export default function RootLayout({
     <html
       lang="uk"
       className={`${tenorSans.variable} ${manrope.variable} ${marckScript.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var path = window.location.pathname;
+                  var scope = path.startsWith('/admin') ? 'admin' : 'kitty';
+                  var saved = localStorage.getItem(scope + '_theme');
+                  var isDark = saved ? saved === 'dark' : (scope === 'admin');
+                  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>
         <AuthProvider>{children}</AuthProvider>
       </body>

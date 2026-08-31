@@ -33,3 +33,10 @@ model ImportantDate {
   updatedAt  DateTime @updatedAt
 }
 
+model Quote {
+  id        String   @id @default(uuid())
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+

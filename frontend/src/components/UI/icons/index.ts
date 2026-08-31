@@ -31,6 +31,7 @@ export {
   Edit,
   X,
   Settings,
+  MessageSquare,
 } from 'lucide-react';
 
 

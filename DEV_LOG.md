@@ -32,6 +32,7 @@
 | 5 | 26.08.2026 | Дашборд Каті: Layout v2.0, Modular Architecture, Theme Store & Smooth AnimateIn | Done ✅ | Frontend, Night Mode, Quotes | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
 | 6 | 26.08.2026 | Дашборд Каті v2.0: Віджети, 12-Колонкова Адаптивна Сітка & Dark Mode Login | Done ✅ | Frontend, Timer & Calendar, Quotes, Night Mode, Auth | `frontend/src/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard.tsx` |
 | 7 | 27.08.2026 | Інтеграція «Наші дати» (Supabase + NestJS API), Таб-Дашборд Адміна, Преміальний Монохром & 2D-Таймлайн | Done ✅ | Backend, Database, Timer & Calendar, Admin Dashboard, Night Mode | `frontend/src/components/modules/kitty/widgets/KittyOurDates/KittyOurDates.tsx` |
+| 8 | 31.08.2026 | Плавна зміна теми без мерехтіння & Full-Stack Модуль Цитати (Supabase DB + NestJS API + Admin Widget) | Done ✅ | Frontend, Backend, Database, Quotes, Night Mode, Admin Dashboard | `frontend/src/services/quotes.service.ts` |
 
 
 ---
@@ -216,6 +217,27 @@
   - Налаштовано `themeColor` у `layout.tsx` для автоматичної адаптації верхівки iOS Status Bar під кольори денної (`#fff7fa`) та темної (`#110d1b`) тем.
   - Усунуто зміщення іконки замка `🔒` та тексту на формі PIN-входу `KittyLoginForm` при швидкому перемиканні теми.
   - Впроваджено глобальні переходи `transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease` у `globals.css` для шовкової зміни кольорів по всьому сайту.
+
+---
+
+### 🗓️ Сеанс #8 (31.08.2026) — Плавна зміна теми без мерехтіння & Full-Stack Модуль Цитати (Supabase DB + NestJS API + Admin Widget)
+
+#### ✅ Реалізовано:
+- **1. Виправлення анімації теми та усунення мерехтіння (Fix Theme Flickering & FOUC)**:
+  - **Прибрано `* { transition }`**: ліквідовано навантаження на браузер та мікролаги при зміні фонів/текстів та анімації таймера.
+  - **Крос-файд градієнтного фону**: реалізовано плавний перехід між світлим та темним градієнтами через шар `body::before` з `opacity 0.35s ease-in-out`.
+  - **Синхронний head-скрипт запобігання спалаху (Anti-FOUC)**: додано інлайн-скрипт у `layout.tsx`, який встановлює `data-theme` до першого рендерингу сторінки при оновленні (F5).
+- **2. Supabase DB & NestJS Backend REST API для Цитат**:
+  - Модель `Quote` додано у Prisma Schema (`schema.prisma`) та засиджено **50 початкових романтичних цитат** у Supabase PostgreSQL через `npx prisma db seed`.
+  - Створено модульний бекенд-сервіс `QuotesModule` (`backend/src/quotes/`) з ендпоінтами CRUD: `GET /quotes`, `POST /quotes`, `PUT /quotes/:id`, `DELETE /quotes/:id`.
+- **3. Фронтенд Сервісний Шар (`quotes.service.ts`)**:
+  - Створено `frontend/src/services/quotes.service.ts` для клієнтської взаємодії з API цитат.
+- **4. Панель Керування Цитатами в Адмінці (`AdminQuotesWidget`)**:
+  - Розроблено UI-віджет `AdminQuotesWidget` у вкладку «💬 Цитати» для створення, редагування та видалення цитат з бази даних.
+- **5. Динамічний Віджет Каті (`KittyQuoteCard`)**:
+  - Віджет `KittyQuoteCard` переведено на динамічне завантаження з API та випадковий вибір цитати з бази даних.
+  - Видалено застарілий статичний масив `kittyQuoteCard.constants.ts`.
+
 
 
 
