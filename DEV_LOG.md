@@ -36,7 +36,7 @@
 | 8 | 31.08.2026 | Плавна зміна теми без мерехтіння & Full-Stack Модуль Цитати (Supabase DB + NestJS API + Admin Widget) | Done ✅ | Frontend, Backend, Database, Quotes, Night Mode, Admin Dashboard | `frontend/src/services/quotes.service.ts` |
 | 9 | 31.08.2026 | Full-Stack Модуль Гріхоміра (Sin-o-meter), Zod DTOs, Real-Time Zustand Store & Redesigned Admin Overview | Done ✅ | Frontend, Backend, Database, Sin-o-meter, Admin Dashboard | `frontend/src/store/useSinsStore.ts` |
 | 10 | 08.09.2026 | Редизайн Навігації (Desktop Header + Mobile Bottom Nav), Спільний Layout та Модульні Сторінки «Дати» й «Фрази» | Done ✅ | Frontend, Night Mode, Timer & Calendar | `frontend/src/app/kitty/layout.tsx` |
-| 11 | Planned ⏳ | 💖 Birthday Landing Page & Romantic Terminal Console Loader | Planned ⏳ | Frontend, Auth, Database | `frontend/src/components/common/RomanticConsoleLoader/` |
+| 11 | 08.09.2026 | Романтична Консоль Завантаження (Romantic Console Loader), Typewriter, Framer Motion & Admin Toggle Switch | Done ✅ | Frontend, Auth, Romantic Console Loader | `frontend/src/components/common/ConsoleLoader/ConsoleLoader.tsx` |
 
 
 
