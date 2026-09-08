@@ -2,19 +2,22 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Sun, Moon, LogOut } from '@/components/UI';
+import { Sun, Moon, LogOut, Terminal } from '@/components/UI';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
+import { useConsoleLoaderStore } from '@/store/useConsoleLoaderStore';
 import styles from './AdminHeader.module.css';
 
 export const AdminHeader: React.FC = () => {
   const router = useRouter();
   const { user, logout } = useAuthStore();
   const { isNightMode, initTheme, toggleTheme } = useThemeStore();
+  const { isConsoleLoaderEnabled, initStore, toggleConsoleLoader } = useConsoleLoaderStore();
 
   useEffect(() => {
     initTheme('admin');
-  }, [initTheme]);
+    initStore();
+  }, [initTheme, initStore]);
 
   const handleLogout = () => {
     logout();
@@ -29,6 +32,16 @@ export const AdminHeader: React.FC = () => {
       </div>
 
       <div className={styles.controls}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={toggleConsoleLoader}
+          title={isConsoleLoaderEnabled ? 'Вимкнути консольний лоадер' : 'Увімкнути консольний лоадер'}
+          style={{ opacity: isConsoleLoaderEnabled ? 1 : 0.4 }}
+        >
+          <Terminal size={18} />
+        </button>
+
         <button
           type="button"
           className={styles.iconBtn}

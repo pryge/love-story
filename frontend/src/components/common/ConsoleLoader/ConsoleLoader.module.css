@@ -1,0 +1,54 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.consoleContent {
+  max-width: 680px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  color: #ff6b9d;
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  padding: 8px;
+  overflow: hidden; 
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.consoleContent::-webkit-scrollbar {
+  display: none;
+}
+
+.logLine {
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.cursor {
+  display: inline-block;
+  color: #ff6b9d;
+  font-weight: bold;
+  margin-left: 3px;
+  animation: blink 0.75s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
