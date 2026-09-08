@@ -1,12 +1,21 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Sparkles, Moon, Sun, LogOut } from '@/components/UI';
-import { useKittyHeader } from './useKittyHeader';
-import styles from './KittyHeader.module.css';
+import React from "react";
+import { Sparkles, Moon, Sun, LogOut } from "@/components/UI";
+import { useKittyHeader } from "./useKittyHeader";
+import styles from "./KittyHeader.module.css";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+const NAV_ITEMS = [
+  { label: "ГОЛОВНА", href: "/kitty" },
+  { label: "НАШІ ДАТИ", href: "/kitty/dates" },
+  { label: "ФРАЗИ", href: "/kitty/phrases" },
+];
 
 export const KittyHeader: React.FC = () => {
   const { isNightMode, handleLogout, toggleTheme } = useKittyHeader();
+  const pathname = usePathname();
 
   return (
     <header className={styles.header}>
@@ -18,12 +27,28 @@ export const KittyHeader: React.FC = () => {
           </span>
         </div>
 
+        <nav className={styles.navSection}>
+          {NAV_ITEMS.map((item) => {
+            const isActive = pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`${styles.navLink} ${isActive ? styles.active : ""}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+
         <div className={styles.controlsSection}>
           <button
             type="button"
             className={styles.iconBtn}
             onClick={toggleTheme}
-            title={isNightMode ? 'Денний режим' : 'Нічний режим'}
+            title={isNightMode ? "Денний режим" : "Нічний режим"}
           >
             {isNightMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -41,5 +66,3 @@ export const KittyHeader: React.FC = () => {
     </header>
   );
 };
-
-

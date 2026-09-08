@@ -34,6 +34,8 @@
 | 7 | 27.08.2026 | Інтеграція «Наші дати» (Supabase + NestJS API), Таб-Дашборд Адміна, Преміальний Монохром & 2D-Таймлайн | Done ✅ | Backend, Database, Timer & Calendar, Admin Dashboard, Night Mode | `frontend/src/components/modules/kitty/widgets/KittyOurDates/KittyOurDates.tsx` |
 | 8 | 31.08.2026 | Плавна зміна теми без мерехтіння & Full-Stack Модуль Цитати (Supabase DB + NestJS API + Admin Widget) | Done ✅ | Frontend, Backend, Database, Quotes, Night Mode, Admin Dashboard | `frontend/src/services/quotes.service.ts` |
 | 9 | 31.08.2026 | Full-Stack Модуль Гріхоміра (Sin-o-meter), Zod DTOs, Real-Time Zustand Store & Redesigned Admin Overview | Done ✅ | Frontend, Backend, Database, Sin-o-meter, Admin Dashboard | `frontend/src/store/useSinsStore.ts` |
+| 10 | 08.09.2026 | Редизайн Навігації (Desktop Header + Mobile Bottom Nav), Спільний Layout та Модульні Сторінки «Дати» й «Фрази» | Done ✅ | Frontend, Night Mode, Timer & Calendar | `frontend/src/app/kitty/layout.tsx` |
+
 
 
 ---
@@ -260,6 +262,42 @@
 - **6. Нова Головна Адмін-Панель (`AdminOverviewWidget` & `AdminSidebar`)**:
   - Нова вкладка «📊 Головна» як дефолтна сторінка входа.
   - Вбудована стрічка Гріхоміра `AdminSinsWidget` із фіксованою висотою, кастомним скролом, фільтрами (`Всі`, `Активні ⏳`, `Пробачені ♥`) та авто-сортуванням (пробачені внизу).
+
+---
+
+### 🗓️ Сеанс #10 (08.09.2026) — Редизайн Навігації (Desktop Header + Mobile Bottom Nav), Спільний Layout та Модульні Сторінки «Дати» й «Фрази»
+
+#### ✅ Реалізовано:
+- **1. Спільний Лейаут для Каті (`src/app/kitty/layout.tsx`)**:
+  - Обгортка для всіх роутів розділу `/kitty/*` із постійним збереженням `BackgroundEffects`, `KittyHeader`, `KittyFooter` та `KittyBottomNav`.
+- **2. Двокомпонентна Адаптивна Навігація**:
+  - **Desktop Navigation (`KittyHeader`)**: додано повноцінне горизонтальне меню навігації для ПК у верхній шапці з анімованим рожевим підкресленням активного роуту.
+  - **Mobile Floating Bottom Navbar (`KittyBottomNav`)**: розроблено плаваючу закріплену знизу скляну панель (Glassmorphism), іконками (`Home`, `Calendar`, `MessageSquare`) та підтримкою iOS Safe Area (`env(safe-area-inset-bottom)`).
+- **3. Модульні Роути та Сторінки**:
+  - 🏠 `/kitty` — **Головна сторінка** (Привітання, Статистика, Таймер разом, Цитата дня).
+  - 🗓️ `/kitty/dates` — **Наші Дати** (Окрема сторінка хронології важливих подій з імпортом `<KittyDatesPage />`).
+  - 💬 `/kitty/phrases` — **Фразочки Олега** (Окрема чиста сторінка-шаблон з імпортом `<KittyPhrasesPage />`).
+- **4. Повне очищення коду**:
+  - Видалено всі коментарі з нових та модифікованих файлів.
+
+#### 🧪 Чеклист для тестування (Testing Checklist):
+- [ ] **1. Перевірка навігації на ПК (Desktop Viewport > 768px)**:
+  - У Хедері відображаються 3 пункти: `ГОЛОВНА`, `НАШІ ДАТИ`, `ФРАЗИ`.
+  - Під активним роутом з'являється рожева лінія-підкреслення.
+  - При кліку на кожен пункт відкривається відповідна сторінка без перезавантаження сторінки.
+  - Нижня мобільна панель прихована.
+- [ ] **2. Перевірка мобільної навігації (Mobile Viewport < 768px)**:
+  - На телефонах у Хедері ховається текстове меню.
+  - Знизу відображається плаваюча скляна плашка з іконками: `Головна`, `Дати`, `Фрази`.
+  - Активна кнопка виділяється рожевим фоном та підсвічується.
+  - Відступи від нижнього краю екрана (Safe Area для iOS).
+- [ ] **3. Перевірка перемикання теми (Light / Dark Mode)**:
+  - Переключити тему на нічну (Moon 🌙) і перевірити читабельність пунктів меню в Хедері та колір нижньої плашки.
+- [ ] **4. Перевірка роутів та чистих сторінок**:
+  - `/kitty` — відображає тільки основні стартові віджети.
+  - `/kitty/dates` — відображає заголовок «Наші Важливі Дати 🗓️✨».
+  - `/kitty/phrases` — відображає заголовок «Фразочки Олега 💬».
+
 
 
 
