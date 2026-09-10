@@ -207,19 +207,20 @@
   align-items: center;
   gap: 6px;
   padding: 9px 18px;
-  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  background: var(--kitty-pink);
   color: #ffffff;
   border: none;
   border-radius: 14px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+  box-shadow: 0 4px 14px rgba(140, 59, 78, 0.25);
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
 .forgiveBtn:hover {
+  background: var(--kitty-pink-hover);
   transform: scale(1.04);
-  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.35);
+  box-shadow: 0 6px 18px rgba(140, 59, 78, 0.35);
 }

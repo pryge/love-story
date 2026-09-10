@@ -89,7 +89,7 @@
   border-color: var(--kitty-pink);
   background: var(--kitty-pink);
   transform: scale(1.15);
-  box-shadow: 0 0 12px rgba(184, 82, 122, 0.4);
+  box-shadow: 0 0 12px rgba(140, 59, 78, 0.4);
 }
 
 .hintCard {

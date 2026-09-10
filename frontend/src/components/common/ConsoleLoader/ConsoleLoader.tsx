@@ -109,6 +109,19 @@ export const ConsoleLoader: React.FC<ConsoleLoaderProps> = ({ onComplete }) => {
               </div>
             )}
           </div>
+
+          <div className={styles.progressWrap}>
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{ width: `${Math.round((lineIndex / ROMANTIC_LOGS.length) * 100)}%` }}
+              />
+            </div>
+            <span className={styles.progressLabel}>
+              {Math.round((lineIndex / ROMANTIC_LOGS.length) * 100)}%
+            </span>
+          </div>
+
         </motion.div>
       )}
     </AnimatePresence>

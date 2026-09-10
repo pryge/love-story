@@ -2,13 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 20px 24px; /* Трохи зменшені відступи для компактності */
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(251, 207, 232, 0.8);
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.06);
+  padding: 24px 32px;
+  background: transparent;
+  border-radius: 28px;
   width: 100%;
   transition: all 0.3s ease;
 }
@@ -22,9 +18,9 @@
 .eyebrow {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #9d4c6c;
+  color: var(--kitty-text-muted);
 }
 
 .liveBadge {
@@ -32,20 +28,21 @@
   align-items: center;
   gap: 6px;
   padding: 4px 10px;
-  background: rgba(251, 207, 232, 0.4);
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
   border-radius: 12px;
   font-size: 11px;
   font-weight: 600;
-  color: #db2777;
+  color: var(--kitty-pink);
   letter-spacing: 0.05em;
 }
 
 .pulseDot {
   width: 6px;
   height: 6px;
-  background-color: #ec4899;
+  background-color: var(--kitty-pink);
   border-radius: 50%;
-  box-shadow: 0 0 8px #ec4899;
+  box-shadow: 0 0 6px var(--kitty-pink);
   animation: pulse 1.8s infinite;
 }
 
@@ -57,21 +54,21 @@
 
 .summaryTitle {
   font-family: var(--font-tenor-sans), serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: #4a2e35;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--kitty-text);
   margin: -4px 0 4px 0;
 }
 
-/* 6-колонкова сітка на десктопі */
 .counterGrid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: center;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-  padding: 12px 0;
-  border: 1px solid rgba(251, 207, 232, 0.5);
+  background: var(--kitty-card-bg);
+  border-radius: 20px;
+  padding: 16px 8px;
+  border: 1px solid var(--kitty-card-border);
+  box-shadow: var(--kitty-shadow);
 }
 
 .timeBlock {
@@ -83,7 +80,6 @@
   padding: 4px 8px;
 }
 
-/* Роздільні лінії між колонками */
 .timeBlock:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -91,20 +87,21 @@
   top: 15%;
   height: 70%;
   width: 1px;
-  background: rgba(244, 114, 182, 0.25);
+  background: var(--kitty-accent-border);
 }
 
 .num {
-  font-size: 26px;
-  font-weight: 700;
-  color: #db2777;
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--kitty-pink);
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
 }
 
 .unit {
   font-size: 12px;
-  color: #8c6070;
+  color: var(--kitty-text-muted);
   margin-top: 4px;
 }
 
@@ -112,8 +109,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
-  color: #8c6070;
+  font-size: 13px;
+  color: var(--kitty-text-muted);
   padding-top: 2px;
 }
 
@@ -121,7 +118,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #ec4899;
+  color: var(--kitty-pink);
   font-weight: 500;
 }
 
@@ -129,53 +126,22 @@
   font-size: 13px;
 }
 
-/* --- ТЕМНА ТЕМА --- */
-:global([data-theme='dark']) .card {
-  background: rgba(30, 18, 42, 0.7);
-  border-color: rgba(236, 72, 153, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-:global([data-theme='dark']) .eyebrow {
-  color: #f472b6;
-}
-
-:global([data-theme='dark']) .summaryTitle {
-  color: #fce7f3;
-}
-
-:global([data-theme='dark']) .counterGrid {
-  background: rgba(20, 10, 30, 0.4);
-  border-color: rgba(236, 72, 153, 0.2);
-}
-
-:global([data-theme='dark']) .num {
-  color: #f472b6;
-}
-
-:global([data-theme='dark']) .unit,
-:global([data-theme='dark']) .bottomRow {
-  color: #d8b4fe;
-}
-
-/* --- Мобільна адаптація (3x2 сітка) --- */
 @media (max-width: 640px) {
   .card {
-    padding: 16px 18px;
-    border-radius: 20px;
+    padding: 12px 4px;
   }
 
   .summaryTitle {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .counterGrid {
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 12px;
-    padding: 12px 6px;
+    row-gap: 14px;
+    padding: 16px 8px;
+    border-radius: 18px;
   }
 
-  /* Скидаємо вертикальну лінію для кожної 3-ї колонки */
   .timeBlock:nth-child(3n)::after {
     display: none;
   }
@@ -185,7 +151,7 @@
   }
 
   .num {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .unit {

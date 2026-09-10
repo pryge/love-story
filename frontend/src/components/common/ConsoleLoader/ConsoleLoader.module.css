@@ -2,27 +2,27 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #fbf6f1 0%, #fdece5 45%, #f6e2dc 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 24px;
   overflow: hidden;
+  gap: 24px;
 }
 
 .consoleContent {
   max-width: 680px;
   width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
+  max-height: 65vh;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  color: #ff6b9d;
-  font-size: 1rem;
-  line-height: 1.8;
+  color: var(--kitty-wine, #8c3b4e);
+  font-size: 0.95rem;
+  line-height: 1.9;
   letter-spacing: 0.01em;
   padding: 8px;
-  overflow: hidden; 
-
+  overflow: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -32,35 +32,68 @@
 }
 
 .logLine {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   word-break: break-word;
 }
 
 .cursor {
   display: inline-block;
-  color: #ff6b9d;
+  color: var(--kitty-champagne, #c9a66b);
   font-weight: bold;
   margin-left: 3px;
-  animation: blink 0.75s infinite;
+  animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Progress bar */
+.progressWrap {
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.progressBar {
+  width: 100%;
+  height: 3px;
+  background: rgba(140, 59, 78, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--kitty-wine, #8c3b4e), var(--kitty-champagne, #c9a66b));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progressLabel {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 12px;
+  color: var(--kitty-text-muted, #8c766f);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 :global([data-theme='dark']) .overlay {
-  background-color: #110d1b;
+  background: linear-gradient(135deg, #1b1013 0%, #241419 50%, #2e1620 100%);
 }
 
 :global([data-theme='dark']) .consoleContent {
-  color: #f472b6;
+  color: var(--kitty-dusty-rose, #c98a9e);
 }
 
 :global([data-theme='dark']) .cursor {
-  color: #f472b6;
+  color: var(--kitty-champagne-soft, #e3cfa4);
+}
+
+:global([data-theme='dark']) .progressBar {
+  background: rgba(201, 138, 158, 0.15);
 }

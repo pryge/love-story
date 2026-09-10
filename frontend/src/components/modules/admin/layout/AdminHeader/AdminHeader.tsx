@@ -2,13 +2,21 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Sun, Moon, LogOut, Terminal } from '@/components/UI';
+import { Sun, Moon, LogOut, Terminal, Menu, X } from '@/components/UI';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useConsoleLoaderStore } from '@/store/useConsoleLoaderStore';
 import styles from './AdminHeader.module.css';
 
-export const AdminHeader: React.FC = () => {
+interface AdminHeaderProps {
+  onToggleMobileMenu?: () => void;
+  isMobileMenuOpen?: boolean;
+}
+
+export const AdminHeader: React.FC<AdminHeaderProps> = ({
+  onToggleMobileMenu,
+  isMobileMenuOpen,
+}) => {
   const router = useRouter();
   const { user, logout } = useAuthStore();
   const { isNightMode, initTheme, toggleTheme } = useThemeStore();
@@ -26,9 +34,21 @@ export const AdminHeader: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.greeting}>
-        <span>Вітаємо, <strong>{user?.name || 'Admin'}</strong> 👋</span>
-        <span className={styles.userRole}>{user?.role || 'ADMIN'}</span>
+      <div className={styles.leftGroup}>
+        {onToggleMobileMenu && (
+          <button
+            type="button"
+            className={styles.menuToggleBtn}
+            onClick={onToggleMobileMenu}
+            aria-label="Toggle Navigation Menu"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        )}
+        <div className={styles.greeting}>
+          <span>Вітаємо, <strong>{user?.name || 'Admin'}</strong> 👋</span>
+          <span className={styles.userRole}>{user?.role || 'ADMIN'}</span>
+        </div>
       </div>
 
       <div className={styles.controls}>

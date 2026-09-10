@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Crown, FileText, Gift, LayoutDashboard, Settings } from '@/components/UI';
+import { Calendar, Crown, FileText, Gift, LayoutDashboard, Settings, X } from '@/components/UI';
 import styles from './AdminSidebar.module.css';
 
 export type AdminTab = 'dashboard' | 'dates' | 'quotes' | 'wishlist' | 'settings';
@@ -9,11 +9,15 @@ export type AdminTab = 'dashboard' | 'dates' | 'quotes' | 'wishlist' | 'settings
 interface AdminSidebarProps {
   activeTab: AdminTab;
   onTabChange: (tab: AdminTab) => void;
+  isOpenMobile?: boolean;
+  onCloseMobile?: () => void;
 }
 
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   activeTab,
   onTabChange,
+  isOpenMobile,
+  onCloseMobile,
 }) => {
   const navItems: { id: AdminTab; label: string; icon: React.ReactNode }[] = [
     { id: 'dashboard', label: 'Головна', icon: <LayoutDashboard size={18} /> },
@@ -23,11 +27,35 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
     { id: 'settings', label: 'Налаштування', icon: <Settings size={18} /> },
   ];
 
+  const handleSelectTab = (tab: AdminTab) => {
+    onTabChange(tab);
+    if (onCloseMobile) {
+      onCloseMobile();
+    }
+  };
+
   return (
-    <aside className={styles.sidebar}>
+    <aside
+      className={`${styles.sidebar} ${
+        isOpenMobile ? styles.mobileOpen : ''
+      }`}
+    >
       <div className={styles.brand}>
-        <Crown size={20} className={styles.brandIcon} />
-        <span>Admin Panel</span>
+        <div className={styles.brandLeft}>
+          <Crown size={20} className={styles.brandIcon} />
+          <span>Admin Panel</span>
+        </div>
+
+        {onCloseMobile && (
+          <button
+            type="button"
+            className={styles.closeBtnMobile}
+            onClick={onCloseMobile}
+            aria-label="Close menu"
+          >
+            <X size={20} />
+          </button>
+        )}
       </div>
 
       <nav className={styles.nav}>
@@ -39,7 +67,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
             className={`${styles.navItem} ${
               activeTab === item.id ? styles.active : ''
             }`}
-            onClick={() => onTabChange(item.id)}
+            onClick={() => handleSelectTab(item.id)}
           >
             <span className={styles.itemIcon}>{item.icon}</span>
             <span>{item.label}</span>

@@ -4,44 +4,66 @@
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  transition: opacity 0.5s ease;
 }
 
-.sparklesWrapper {
+/* Primary warm rose glow — top right */
+.ambientGlow {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: -10%;
+  right: -5%;
+  width: 55vw;
+  height: 55vh;
+  background: radial-gradient(
+    ellipse at 60% 40%,
+    rgba(201, 138, 158, 0.13) 0%,
+    rgba(201, 166, 107, 0.06) 50%,
+    transparent 75%
+  );
+  filter: blur(50px);
+  animation: driftA 18s ease-in-out infinite alternate;
 }
 
-.sparkleItem {
+/* Secondary champagne glow — bottom left */
+.ambientGlow2 {
   position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(244, 114, 182, 0.9) 0%, rgba(236, 72, 153, 0) 75%);
-  box-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
-  animation: floatSparkle linear infinite, pulseSparkle 2s ease-in-out infinite alternate;
+  bottom: 10%;
+  left: -5%;
+  width: 45vw;
+  height: 45vh;
+  background: radial-gradient(
+    ellipse at 30% 70%,
+    rgba(201, 166, 107, 0.09) 0%,
+    rgba(140, 59, 78, 0.05) 55%,
+    transparent 75%
+  );
+  filter: blur(60px);
+  animation: driftB 22s ease-in-out infinite alternate;
 }
 
-@keyframes floatSparkle {
-  0% {
-    transform: translateY(105vh) scale(0.6) rotate(0deg);
-    opacity: 0;
-  }
-  15% { opacity: var(--sparkle-opacity, 0.8); }
-  85% { opacity: var(--sparkle-opacity, 0.8); }
-  100% {
-    transform: translateY(-10vh) scale(1.2) rotate(180deg);
-    opacity: 0;
-  }
+@keyframes driftA {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-3%, 4%) scale(1.05); }
 }
 
-@keyframes pulseSparkle {
-  0% { filter: brightness(0.9); }
-  100% { filter: brightness(1.4); }
+@keyframes driftB {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(4%, -3%) scale(1.08); }
 }
 
-:global([data-theme='dark']) .sparkleItem {
-  background: radial-gradient(circle, rgba(244, 114, 182, 1) 0%, rgba(192, 132, 252, 0) 75%);
-  box-shadow: 0 0 14px rgba(244, 114, 182, 0.8);
+:global([data-theme='dark']) .ambientGlow {
+  background: radial-gradient(
+    ellipse at 60% 40%,
+    rgba(140, 59, 78, 0.18) 0%,
+    rgba(201, 166, 107, 0.06) 55%,
+    transparent 75%
+  );
 }
 
+:global([data-theme='dark']) .ambientGlow2 {
+  background: radial-gradient(
+    ellipse at 30% 70%,
+    rgba(201, 166, 107, 0.10) 0%,
+    rgba(140, 59, 78, 0.06) 55%,
+    transparent 75%
+  );
+}

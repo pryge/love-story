@@ -4,12 +4,12 @@
   justify-content: space-between;
   gap: 16px;
   padding: 28px 32px;
-  background: linear-gradient(135deg, rgba(253, 242, 248, 0.85) 0%, rgba(250, 232, 240, 0.7) 100%);
+  background: var(--kitty-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(251, 207, 232, 0.8);
+  border: 1px solid var(--kitty-card-border);
   border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.06);
+  box-shadow: var(--kitty-shadow);
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -21,7 +21,7 @@
   font-family: var(--font-tenor-sans), serif;
   font-size: 48px;
   line-height: 1;
-  color: #ec4899;
+  color: var(--kitty-pink);
   opacity: 0.6;
   margin-bottom: -12px;
   user-select: none;
@@ -31,16 +31,16 @@
 .quoteContent {
   display: flex;
   align-items: center;
-  min-height: 72px; /* Фіксує висоту незалежно від 1 чи 2 рядків */
+  min-height: 72px;
 }
 
 .quoteText {
   font-family: var(--font-tenor-sans), serif;
   font-size: 24px;
   line-height: 1.35;
-  color: #4a2e35;
+  color: var(--kitty-text);
   margin: 0;
-  text-wrap: balance; /* Красивий рівномірний перенос слів */
+  text-wrap: balance;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -59,7 +59,7 @@
 .authorTag {
   font-size: 12px;
   font-weight: 500;
-  color: #9d4c6c;
+  color: var(--kitty-pink);
   letter-spacing: 0.03em;
 }
 
@@ -70,49 +70,49 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(251, 207, 232, 0.9);
-  color: #ec4899;
+  background: var(--kitty-accent-bg);
+  border: 1px solid var(--kitty-accent-border);
+  color: var(--kitty-pink);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .actionBtn:hover {
-  background: #ffffff;
+  background: var(--kitty-card-bg);
   transform: scale(1.06);
-  border-color: #f472b6;
-  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+  border-color: var(--kitty-pink);
+  box-shadow: 0 6px 18px rgba(140, 59, 78, 0.18);
 }
 
 /* --- ТЕМНА ТЕМА --- */
 :global([data-theme='dark']) .quoteCard {
-  background: linear-gradient(135deg, rgba(38, 20, 50, 0.85) 0%, rgba(28, 14, 38, 0.75) 100%);
-  border-color: rgba(236, 72, 153, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  background: var(--kitty-card-bg);
+  border-color: var(--kitty-card-border);
+  box-shadow: var(--kitty-shadow);
 }
 
 :global([data-theme='dark']) .quoteMark {
-  color: #f472b6;
+  color: var(--kitty-pink);
   opacity: 0.8;
 }
 
 :global([data-theme='dark']) .quoteText {
-  color: #fce7f3;
+  color: var(--kitty-text);
 }
 
 :global([data-theme='dark']) .authorTag {
-  color: #f472b6;
+  color: var(--kitty-pink);
 }
 
 :global([data-theme='dark']) .actionBtn {
-  background: rgba(55, 30, 75, 0.8);
-  border-color: rgba(236, 72, 153, 0.35);
-  color: #f472b6;
+  background: var(--kitty-accent-bg);
+  border-color: var(--kitty-accent-border);
+  color: var(--kitty-pink);
 }
 
 :global([data-theme='dark']) .actionBtn:hover {
-  background: rgba(75, 40, 100, 0.95);
-  color: #fce7f3;
+  background: var(--kitty-card-bg);
+  color: var(--kitty-text);
 }
 
 /* --- Мобільна адаптація --- */

@@ -15,6 +15,30 @@
   transition: all 0.3s ease;
 }
 
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuToggleBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menuToggleBtn:hover {
+  background: var(--admin-badge-bg);
+}
+
 .greeting {
   font-family: var(--font-manrope), sans-serif;
   font-size: 15px;
@@ -61,3 +85,32 @@
   background: var(--admin-badge-bg);
   transform: translateY(-1px);
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    height: 58px;
+  }
+
+  .menuToggleBtn {
+    display: flex;
+  }
+
+  .greeting {
+    font-size: 13px;
+  }
+
+  .userRole {
+    display: none;
+  }
+
+  .controls {
+    gap: 6px;
+  }
+
+  .iconBtn {
+    width: 34px;
+    height: 34px;
+  }
+}
+

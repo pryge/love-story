@@ -35,6 +35,7 @@ export {
   MessageSquare,
   LayoutDashboard,
   Terminal,
+  Menu,
 } from 'lucide-react';
 
 
