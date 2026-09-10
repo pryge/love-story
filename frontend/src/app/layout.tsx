@@ -57,7 +57,15 @@ export default function RootLayout({
                   var path = window.location.pathname;
                   var scope = path.startsWith('/admin') ? 'admin' : 'kitty';
                   var saved = localStorage.getItem(scope + '_theme');
-                  var isDark = saved ? saved === 'dark' : (scope === 'admin');
+                  var isDark;
+                  if (saved) {
+                    isDark = saved === 'dark';
+                  } else if (scope === 'admin') {
+                    isDark = true;
+                  } else {
+                    var hour = new Date().getHours();
+                    isDark = hour >= 22 || hour < 7;
+                  }
                   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
                 } catch(e) {}
               })();

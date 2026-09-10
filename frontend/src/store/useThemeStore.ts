@@ -19,9 +19,15 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
 
     const themeKey = `${scope}_theme`;
     const savedTheme = localStorage.getItem(themeKey);
-    const isDark = savedTheme
-      ? savedTheme === 'dark'
-      : scope === 'admin';
+    let isDark: boolean;
+    if (savedTheme) {
+      isDark = savedTheme === 'dark';
+    } else if (scope === 'admin') {
+      isDark = true;
+    } else {
+      const currentHour = new Date().getHours();
+      isDark = currentHour >= 22 || currentHour < 7;
+    }
 
     const themeValue = isDark ? 'dark' : 'light';
     if (document.documentElement.getAttribute('data-theme') !== themeValue) {

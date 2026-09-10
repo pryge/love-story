@@ -52,3 +52,15 @@
     opacity: 0;
   }
 }
+
+:global([data-theme='dark']) .overlay {
+  background-color: #110d1b;
+}
+
+:global([data-theme='dark']) .consoleContent {
+  color: #f472b6;
+}
+
+:global([data-theme='dark']) .cursor {
+  color: #f472b6;
+}

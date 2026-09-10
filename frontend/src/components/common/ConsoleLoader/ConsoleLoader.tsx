@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './ConsoleLoader.module.css';
 import { ROMANTIC_LOGS } from './consoleLoader.constants';
 import { useConsoleLoaderStore } from '@/store/useConsoleLoaderStore';
+import { useThemeStore } from '@/store/useThemeStore';
 
 interface ConsoleLoaderProps {
   onComplete?: () => void;
@@ -12,10 +13,12 @@ interface ConsoleLoaderProps {
 
 export const ConsoleLoader: React.FC<ConsoleLoaderProps> = ({ onComplete }) => {
   const { isConsoleLoaderEnabled, initStore } = useConsoleLoaderStore();
+  const initTheme = useThemeStore((state) => state.initTheme);
 
   useEffect(() => {
     initStore();
-  }, [initStore]);
+    initTheme('kitty');
+  }, [initStore, initTheme]);
 
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
   const [currentText, setCurrentText] = useState<string>('');
