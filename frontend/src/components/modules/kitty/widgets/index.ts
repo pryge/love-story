@@ -4,6 +4,5 @@ export * from './KittyQuoteCard';
 export * from './KittyPlaceholderCard';
 export * from './KittyOurDates';
 export * from './KittySinometer';
-export * from './KittyStatsWidget';
 
 
