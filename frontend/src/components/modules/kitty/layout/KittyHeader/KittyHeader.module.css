@@ -4,10 +4,10 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(255, 245, 248, 0.75);
+  background: var(--kitty-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(251, 207, 232, 0.5);
+  border-bottom: 1px solid var(--kitty-card-border);
   transition: all 0.3s ease;
 }
 
@@ -31,14 +31,14 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-tenor-sans), serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #8c5264;
-  letter-spacing: 0.02em;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--kitty-text);
+  letter-spacing: 0.04em;
 }
 
 .brandIcon {
-  color: #ec4899;
+  color: var(--kitty-champagne, #c9a66b);
 }
 
 .controlsSection {
@@ -52,9 +52,9 @@
   width: 38px;
   height: 38px;
   border-radius: 12px;
-  border: 1px solid rgba(251, 207, 232, 0.6);
-  background: rgba(255, 255, 255, 0.8);
-  color: #704250;
+  border: 1px solid var(--kitty-card-border);
+  background: var(--kitty-card-bg);
+  color: var(--kitty-text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,10 +63,11 @@
 }
 
 .iconBtn:hover {
-  background: #ffffff;
-  color: #ec4899;
-  border-color: #f472b6;
+  background: var(--kitty-accent-bg);
+  color: var(--kitty-pink);
+  border-color: var(--kitty-pink);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(140, 59, 78, 0.15);
 }
 
 .navSection {
@@ -81,7 +82,7 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #704250;
+  color: var(--kitty-text-muted);
   text-decoration: none;
   padding: 4px 0;
   position: relative;
@@ -89,11 +90,11 @@
 }
 
 .navLink:hover {
-  color: #ec4899;
+  color: var(--kitty-pink);
 }
 
 .navLink.active {
-  color: #ec4899;
+  color: var(--kitty-pink);
   font-weight: 600;
 }
 
@@ -104,7 +105,7 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background: #ec4899;
+  background: linear-gradient(90deg, var(--kitty-wine, #8c3b4e), var(--kitty-dusty-rose, #c98a9e));
   border-radius: 2px;
   transition: width 0.25s ease;
 }
@@ -121,7 +122,7 @@
   }
 
   .brandLogo {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .iconBtn {
@@ -136,37 +137,40 @@
 }
 
 :global([data-theme='dark']) .header {
-  background: rgba(22, 16, 33, 0.85);
-  border-bottom-color: rgba(236, 72, 153, 0.2);
+  background: rgba(27, 16, 19, 0.82);
+  border-bottom-color: var(--kitty-card-border);
 }
 
 :global([data-theme='dark']) .brandLogo {
-  color: #f472b6;
+  color: var(--kitty-text);
+}
+
+:global([data-theme='dark']) .brandIcon {
+  color: var(--kitty-champagne, #c9a66b);
 }
 
 :global([data-theme='dark']) .iconBtn {
-  background: rgba(45, 27, 60, 0.8);
-  border-color: rgba(236, 72, 153, 0.3);
-  color: #f472b6;
+  background: rgba(36, 20, 25, 0.85);
+  border-color: var(--kitty-card-border);
+  color: var(--kitty-text-muted);
 }
 
 :global([data-theme='dark']) .iconBtn:hover {
-  background: rgba(65, 38, 88, 0.9);
-  color: #fb7185;
-  border-color: #f472b6;
+  background: var(--kitty-accent-bg);
+  color: var(--kitty-pink);
+  border-color: var(--kitty-pink);
+  box-shadow: 0 4px 12px rgba(201, 166, 107, 0.2);
 }
 
 :global([data-theme='dark']) .navLink {
-  color: #d8c4d2;
+  color: var(--kitty-text-muted);
 }
 
 :global([data-theme='dark']) .navLink:hover,
 :global([data-theme='dark']) .navLink.active {
-  color: #f472b6;
+  color: var(--kitty-pink);
 }
 
 :global([data-theme='dark']) .navLink::after {
-  background: #f472b6;
+  background: linear-gradient(90deg, var(--kitty-dusty-rose, #c98a9e), var(--kitty-champagne, #c9a66b));
 }
-
-

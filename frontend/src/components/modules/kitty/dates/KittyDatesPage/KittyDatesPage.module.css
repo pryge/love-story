@@ -12,16 +12,16 @@
 .title {
   font-family: var(--font-tenor-sans), serif;
   font-size: 32px;
-  font-weight: 600;
-  color: var(--kitty-primary, #8c5264);
+  font-weight: 500;
+  color: var(--kitty-text);
   margin-bottom: 10px;
   letter-spacing: 0.02em;
 }
 
 .subtitle {
   font-family: var(--font-marck-script), cursive;
-  font-size: 22px;
-  color: #ec4899;
+  font-size: 24px;
+  color: var(--kitty-pink);
 }
 
 @media (max-width: 768px) {
@@ -34,14 +34,14 @@
   }
 
   .subtitle {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
 :global([data-theme='dark']) .title {
-  color: #f472b6;
+  color: var(--kitty-text);
 }
 
 :global([data-theme='dark']) .subtitle {
-  color: #fb7185;
+  color: var(--kitty-dusty-rose, #c98a9e);
 }
