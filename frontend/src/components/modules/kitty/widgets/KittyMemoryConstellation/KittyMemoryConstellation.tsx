@@ -46,15 +46,23 @@ const Star: React.FC<StarProps> = ({ position, label, colorHex, baseScale, phase
   };
 
   return (
-    <mesh ref={meshRef} position={position} onClick={handleClick}>
-      <sphereGeometry args={[0.12, 16, 16]} />
-      <meshStandardMaterial
-        color={colorHex}
-        emissive={colorHex}
-        emissiveIntensity={1.4}
-        toneMapped={false}
-      />
-    </mesh>
+    <group position={position}>
+      {/* Invisible hit-target sphere — larger radius for reliable mobile taps */}
+      <mesh onClick={handleClick}>
+        <sphereGeometry args={[0.35, 8, 8]} />
+        <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+      </mesh>
+      {/* Visible star with pulse animation */}
+      <mesh ref={meshRef}>
+        <sphereGeometry args={[0.12, 16, 16]} />
+        <meshStandardMaterial
+          color={colorHex}
+          emissive={colorHex}
+          emissiveIntensity={1.4}
+          toneMapped={false}
+        />
+      </mesh>
+    </group>
   );
 };
 
