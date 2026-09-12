@@ -21,6 +21,8 @@ export const KittyDatesPage: React.FC = () => {
   }, []);
 
   const calculated = getAllCalculatedDates(dates);
+  // The first item has the smallest daysRemaining — it's the nearest upcoming date
+  const nearestId = calculated.length > 0 ? calculated[0].id : null;
 
   return (
     <div className={styles.container}>
@@ -34,37 +36,53 @@ export const KittyDatesPage: React.FC = () => {
       </AnimateIn>
 
       <div className={styles.datesList}>
-        {calculated.map((item, index) => (
-          <AnimateIn key={item.id} direction="up" delay={0.15 + index * 0.08}>
-            <button
-              type="button"
-              className={styles.dateCard}
-              onClick={() => setSelectedDate(item)}
-            >
-              <div className={styles.cardLeft}>
-                <div className={styles.dateBadge}>
-                  <span className={styles.badgeDay}>{item.dayStr}</span>
-                  <span className={styles.badgeMonth}>{item.monthStr}</span>
-                </div>
-                <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{item.title}</span>
-                  <span className={styles.cardCountdown}>
-                    {item.countdownText}
-                  </span>
-                  <span className={styles.cardCategory}>{item.category}</span>
-                </div>
-              </div>
+        {/* Vertical timeline line */}
+        <div className={styles.timelineLine} />
 
-              {item.isFavorite && (
-                <Star
-                  size={16}
-                  className={styles.starIcon}
-                  fill="currentColor"
+        {calculated.map((item, index) => {
+          const isNearest = item.id === nearestId;
+          return (
+            <AnimateIn key={item.id} direction="up" delay={0.15 + index * 0.08}>
+              <div className={styles.timelineRow}>
+                {/* Connector dot on the timeline */}
+                <span
+                  className={`${styles.timelineDot} ${isNearest ? styles.timelineDotNearest : ''}`}
                 />
-              )}
-            </button>
-          </AnimateIn>
-        ))}
+
+                <button
+                  type="button"
+                  className={`${styles.dateCard} ${isNearest ? styles.dateCardNearest : ''}`}
+                  onClick={() => setSelectedDate(item)}
+                >
+                  {isNearest && (
+                    <span className={styles.soonBadge}>Вже скоро ✨</span>
+                  )}
+                  <div className={styles.cardLeft}>
+                    <div className={styles.dateBadge}>
+                      <span className={styles.badgeDay}>{item.dayStr}</span>
+                      <span className={styles.badgeMonth}>{item.monthStr}</span>
+                    </div>
+                    <div className={styles.cardInfo}>
+                      <span className={styles.cardTitle}>{item.title}</span>
+                      <span className={styles.cardCountdown}>
+                        {item.countdownText}
+                      </span>
+                      <span className={styles.cardCategory}>{item.category}</span>
+                    </div>
+                  </div>
+
+                  {item.isFavorite && (
+                    <Star
+                      size={16}
+                      className={styles.starIcon}
+                      fill="currentColor"
+                    />
+                  )}
+                </button>
+              </div>
+            </AnimateIn>
+          );
+        })}
       </div>
 
       <KittyTimeCapsule

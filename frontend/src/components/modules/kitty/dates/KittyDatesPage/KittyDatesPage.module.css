@@ -34,6 +34,66 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+  padding-left: 24px;
+}
+
+/* ── Vertical timeline line ── */
+.timelineLine {
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--kitty-card-border);
+  border-radius: 1px;
+}
+
+/* ── Each row (dot + card) ── */
+.timelineRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Connector dot ── */
+.timelineDot {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--kitty-card-border);
+  border: 2px solid var(--kitty-bg, #fff);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.timelineDotNearest {
+  width: 12px;
+  height: 12px;
+  left: -22px;
+  background: var(--kitty-wine);
+  border-color: var(--kitty-cream, #fff);
+  box-shadow: 0 0 8px rgba(140, 59, 78, 0.4);
+}
+
+/* ── "Вже скоро" badge ── */
+.soonBadge {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--kitty-wine);
+  padding: 2px 8px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
 }
 
 /* ── Date card (button) ── */
@@ -54,6 +114,7 @@
   text-align: left;
   -webkit-tap-highlight-color: transparent;
   font-family: inherit;
+  position: relative;
 }
 
 .dateCard:hover {
@@ -64,6 +125,14 @@
 
 .dateCard:active {
   transform: scale(0.98);
+}
+
+/* ── Highlighted nearest date ── */
+.dateCardNearest {
+  padding: 20px 22px;
+  border-color: var(--kitty-wine);
+  border-width: 2px;
+  box-shadow: 0 4px 16px rgba(140, 59, 78, 0.15);
 }
 
 .cardLeft {
@@ -181,4 +250,29 @@
 
 :global([data-theme='dark']) .badgeDay {
   color: var(--kitty-dusty-rose);
+}
+
+:global([data-theme='dark']) .timelineLine {
+  background: var(--kitty-card-border);
+}
+
+:global([data-theme='dark']) .timelineDot {
+  background: var(--kitty-card-border);
+  border-color: var(--kitty-bg, #1a0f13);
+}
+
+:global([data-theme='dark']) .timelineDotNearest {
+  background: var(--kitty-dusty-rose);
+  border-color: var(--kitty-bg, #1a0f13);
+  box-shadow: 0 0 8px rgba(201, 138, 158, 0.4);
+}
+
+:global([data-theme='dark']) .dateCardNearest {
+  border-color: var(--kitty-dusty-rose);
+  box-shadow: 0 4px 16px rgba(201, 138, 158, 0.2);
+}
+
+:global([data-theme='dark']) .soonBadge {
+  background: var(--kitty-dusty-rose);
+  color: #1a0f13;
 }
