@@ -33,6 +33,7 @@ export {
   X,
   Settings,
   MessageSquare,
+  MessageCircle,
   LayoutDashboard,
   Terminal,
   Menu,

@@ -1,0 +1,130 @@
+/* ────────────────────────────────────
+   KittyTimeCapsule — кінематографічна модалка
+   ──────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(140, 59, 78, 0.92);
+  padding: 24px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Close button ── */
+.closeBtn {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.closeBtn:active {
+  transform: scale(0.92);
+}
+
+/* ── Content ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  max-width: 360px;
+}
+
+.category {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.title {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #fff;
+  margin: 8px 0;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.dateBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 14px 24px;
+  margin: 12px 0;
+}
+
+.badgeDay {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+
+.badgeMonth {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.countdown {
+  font-family: var(--font-marck-script), cursive;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+}
+
+.favStar {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 12px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .badgeDay {
+    font-size: 34px;
+  }
+}

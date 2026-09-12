@@ -1,0 +1,130 @@
+/* ────────────────────────────────────
+   KittyMemoryConstellation
+   3D-сузір'я спогадів — повноекранна сцена
+   ──────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100dvh - 64px - env(safe-area-inset-bottom, 0px));
+  overflow: hidden;
+}
+
+/* ── 3D Canvas ── */
+.canvasContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ── Tooltip при кліку на зірку ── */
+.tooltip {
+  position: fixed;
+  z-index: 20;
+  transform: translateX(-50%);
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kitty-text);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(140, 59, 78, 0.15);
+  animation: tooltipIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes tooltipIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* ── Центральний overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  padding: 0 24px;
+  gap: 2px;
+}
+
+.daysNumber {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 100px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--kitty-wine);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 30px rgba(140, 59, 78, 0.25);
+}
+
+.daysLabel {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--kitty-text-muted);
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+.greetingText {
+  font-family: var(--font-marck-script), cursive;
+  font-size: 26px;
+  color: var(--kitty-dusty-rose);
+  margin-top: 12px;
+  line-height: 1.2;
+}
+
+.marginNote {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--kitty-text-muted);
+  margin-top: 8px;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* ── Mobile tweaks ── */
+@media (max-width: 480px) {
+  .daysNumber {
+    font-size: 80px;
+  }
+
+  .greetingText {
+    font-size: 22px;
+  }
+}
+
+/* ── Dark mode ── */
+:global([data-theme='dark']) .tooltip {
+  background: rgba(36, 20, 25, 0.92);
+  border-color: var(--kitty-card-border);
+  color: var(--kitty-text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme='dark']) .daysNumber {
+  color: var(--kitty-dusty-rose);
+  text-shadow: 0 4px 30px rgba(201, 138, 158, 0.3);
+}
+
+:global([data-theme='dark']) .greetingText {
+  color: var(--kitty-champagne);
+}

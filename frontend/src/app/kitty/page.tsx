@@ -1,6 +1,15 @@
-import { KittyDashboard } from "@/components/modules/kitty/dashboard/KittyDashboard/KittyDashboard";
+'use client';
 
+import dynamic from 'next/dynamic';
+
+const KittyMemoryConstellation = dynamic(
+  () =>
+    import(
+      '@/components/modules/kitty/widgets/KittyMemoryConstellation/KittyMemoryConstellation'
+    ).then((mod) => mod.KittyMemoryConstellation),
+  { ssr: false }
+);
 
 export default function KittyPage() {
-  return <KittyDashboard />;
+  return <KittyMemoryConstellation />;
 }

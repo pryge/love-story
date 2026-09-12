@@ -1,0 +1,1 @@
+export { KittyTabBar } from './KittyTabBar';

@@ -1,0 +1,185 @@
+/* ────────────────────────────────────
+   KittyPhraseSwipeCard — свайп-картки фраз
+   ──────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 64px - env(safe-area-inset-bottom, 0px) - 80px);
+  padding: 24px 20px;
+  gap: 28px;
+  user-select: none;
+}
+
+.loading {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 14px;
+  color: var(--kitty-text-muted);
+}
+
+/* ── Card area ── */
+.cardArea {
+  width: 100%;
+  max-width: 340px;
+  perspective: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Card ── */
+.card {
+  width: 100%;
+  min-height: 280px;
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 24px;
+  padding: 40px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  cursor: grab;
+  touch-action: pan-y;
+  box-shadow: 0 12px 40px rgba(140, 59, 78, 0.12);
+  position: relative;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+/* ── Quote mark ── */
+.quoteMark {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--kitty-dusty-rose);
+  opacity: 0.35;
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  pointer-events: none;
+}
+
+/* ── Quote text ── */
+.quoteText {
+  font-family: var(--font-marck-script), cursive;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--kitty-text);
+  margin: 0;
+  padding: 0 8px;
+}
+
+/* ── Author ── */
+.authorTag {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--kitty-text-muted);
+  margin-top: 8px;
+}
+
+/* ── Controls row ── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arrowBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--kitty-card-border);
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--kitty-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.arrowBtn:hover {
+  color: var(--kitty-wine);
+  border-color: var(--kitty-wine);
+  transform: scale(1.05);
+}
+
+.arrowBtn:active {
+  transform: scale(0.92);
+}
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 200px;
+  overflow: hidden;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--kitty-card-border);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.dotActive {
+  width: 18px;
+  border-radius: 10px;
+  background: var(--kitty-wine);
+}
+
+/* ── Counter ── */
+.counter {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--kitty-text-muted);
+  opacity: 0.6;
+}
+
+/* ── Dark mode ── */
+:global([data-theme='dark']) .card {
+  background: var(--kitty-card-bg);
+  border-color: var(--kitty-card-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme='dark']) .quoteMark {
+  color: var(--kitty-champagne);
+  opacity: 0.25;
+}
+
+:global([data-theme='dark']) .quoteText {
+  color: var(--kitty-text);
+}
+
+:global([data-theme='dark']) .arrowBtn {
+  background: rgba(36, 20, 25, 0.7);
+  border-color: var(--kitty-card-border);
+}
+
+:global([data-theme='dark']) .arrowBtn:hover {
+  color: var(--kitty-dusty-rose);
+  border-color: var(--kitty-dusty-rose);
+}
+
+:global([data-theme='dark']) .dotActive {
+  background: var(--kitty-dusty-rose);
+}

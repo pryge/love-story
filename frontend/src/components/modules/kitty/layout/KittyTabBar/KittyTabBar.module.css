@@ -1,0 +1,143 @@
+/* ────────────────────────────────────────────────
+   KittyTabBar — фіксована нижня навігація (PWA)
+   ──────────────────────────────────────────────── */
+
+.tabBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+  display: flex;
+  align-items: stretch;
+
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--kitty-card-border);
+
+  /* Ніжна тінь догори */
+  box-shadow: 0 -4px 24px rgba(140, 59, 78, 0.08);
+}
+
+/* ── Окрема вкладка ── */
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 4px 4px;
+  text-decoration: none;
+  color: var(--kitty-text-muted);
+  transition: color 0.2s ease;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.tab:active {
+  opacity: 0.7;
+}
+
+/* ── Іконка з індикатором ── */
+.iconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+}
+
+.icon {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: inherit;
+}
+
+/* Маленький кружок-акцент під активною іконкою */
+.activeIndicator {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--kitty-wine);
+  animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ── Підпис ── */
+.label {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, font-weight 0.15s ease;
+  line-height: 1;
+}
+
+/* ── Активний стан ── */
+.tab.active {
+  color: var(--kitty-wine);
+}
+
+.tab.active .icon {
+  transform: translateY(-2px) scale(1.12);
+}
+
+.tab.active .label {
+  font-weight: 700;
+}
+
+/* ── Hover (тільки на не-touch пристроях) ── */
+@media (hover: hover) {
+  .tab:hover:not(.active) {
+    color: var(--kitty-dusty-rose);
+  }
+
+  .tab:hover:not(.active) .icon {
+    transform: translateY(-1px);
+  }
+}
+
+/* ── Анімація індикатора ── */
+@keyframes popIn {
+  from {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Dark mode ── */
+:global([data-theme='dark']) .tabBar {
+  background: rgba(27, 16, 19, 0.88);
+  border-top-color: var(--kitty-card-border);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme='dark']) .tab {
+  color: var(--kitty-text-muted);
+}
+
+:global([data-theme='dark']) .tab.active {
+  color: var(--kitty-dusty-rose);
+}
+
+:global([data-theme='dark']) .activeIndicator {
+  background: var(--kitty-dusty-rose);
+}
+
+:global([data-theme='dark']) .tab:hover:not(.active) {
+  color: var(--kitty-champagne);
+}

@@ -1,0 +1,53 @@
+/* KittyTopActions — fixed-кнопки у верхньому правому куті */
+
+.wrapper {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  right: 16px;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--kitty-card-border);
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--kitty-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  color: var(--kitty-wine);
+  border-color: var(--kitty-wine);
+  background: var(--kitty-accent-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(140, 59, 78, 0.15);
+}
+
+.btn:active {
+  transform: scale(0.92);
+}
+
+:global([data-theme='dark']) .btn {
+  background: rgba(36, 20, 25, 0.85);
+  border-color: var(--kitty-card-border);
+  color: var(--kitty-text-muted);
+}
+
+:global([data-theme='dark']) .btn:hover {
+  color: var(--kitty-dusty-rose);
+  border-color: var(--kitty-dusty-rose);
+  background: var(--kitty-accent-bg);
+  box-shadow: 0 4px 12px rgba(201, 138, 158, 0.2);
+}

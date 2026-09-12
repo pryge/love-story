@@ -6,7 +6,6 @@ import {
   KittyHeroGreeting,
   KittyQuoteCard,
   TogetherTimer,
-  KittySinometer,
 } from '../../widgets';
 import { AnimateIn } from '@/components/UI';
 
@@ -22,15 +21,9 @@ export const KittyDashboard: React.FC = () => {
           <TogetherTimer />
         </AnimateIn>
 
-        <div className={styles.twoColSection}>
-          <AnimateIn direction="up" delay={0.3} className={styles.flexItem}>
-            <KittyQuoteCard />
-          </AnimateIn>
-
-          <AnimateIn direction="up" delay={0.4} className={styles.flexItem}>
-            <KittySinometer />
-          </AnimateIn>
-        </div>
+        <AnimateIn direction="up" delay={0.3}>
+          <KittyQuoteCard />
+        </AnimateIn>
       </div>
     </main>
   );

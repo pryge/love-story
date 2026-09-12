@@ -1,32 +1,150 @@
+/* ────────────────────────────────────
+   KittyDatesPage — список дат
+   ──────────────────────────────────── */
+
 .container {
-  max-width: 1100px;
+  max-width: 520px;
   margin: 0 auto;
-  padding: 32px 20px 100px 20px;
+  padding: 32px 20px 24px;
 }
 
+/* ── Header ── */
 .header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .title {
   font-family: var(--font-tenor-sans), serif;
-  font-size: 32px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 400;
   color: var(--kitty-text);
-  margin-bottom: 10px;
-  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
 }
 
 .subtitle {
   font-family: var(--font-marck-script), cursive;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--kitty-pink);
 }
 
-@media (max-width: 768px) {
+/* ── Dates list ── */
+.datesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Date card (button) ── */
+.dateCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  background: var(--kitty-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+
+.dateCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(140, 59, 78, 0.12);
+  border-color: var(--kitty-dusty-rose);
+}
+
+.dateCard:active {
+  transform: scale(0.98);
+}
+
+.cardLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Date badge ── */
+.dateBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  background: var(--kitty-accent-bg);
+  border-radius: 12px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+  min-width: 48px;
+}
+
+.badgeDay {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--kitty-wine);
+  line-height: 1;
+}
+
+.badgeMonth {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--kitty-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Card info ── */
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--kitty-text);
+  line-height: 1.2;
+}
+
+.cardCountdown {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--kitty-pink);
+}
+
+.cardCategory {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--kitty-text-muted);
+  opacity: 0.75;
+}
+
+/* ── Star icon ── */
+.starIcon {
+  color: var(--kitty-champagne);
+  flex-shrink: 0;
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
   .container {
-    padding: 20px 14px 110px 14px;
+    padding: 20px 16px 24px;
   }
 
   .title {
@@ -34,14 +152,33 @@
   }
 
   .subtitle {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
+/* ── Dark mode ── */
 :global([data-theme='dark']) .title {
   color: var(--kitty-text);
 }
 
 :global([data-theme='dark']) .subtitle {
-  color: var(--kitty-dusty-rose, #c98a9e);
+  color: var(--kitty-dusty-rose);
+}
+
+:global([data-theme='dark']) .dateCard {
+  background: var(--kitty-card-bg);
+  border-color: var(--kitty-card-border);
+}
+
+:global([data-theme='dark']) .dateCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--kitty-champagne);
+}
+
+:global([data-theme='dark']) .dateBadge {
+  background: var(--kitty-accent-bg);
+}
+
+:global([data-theme='dark']) .badgeDay {
+  color: var(--kitty-dusty-rose);
 }
