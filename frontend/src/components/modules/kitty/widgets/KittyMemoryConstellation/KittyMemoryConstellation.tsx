@@ -5,6 +5,8 @@ import { Canvas, useFrame, ThreeEvent } from '@react-three/fiber';
 import { OrbitControls, Line } from '@react-three/drei';
 import type * as THREE from 'three';
 
+import { useThemeStore } from '@/store/useThemeStore';
+
 import { datesService } from '@/services/dates.service';
 import { ImportantDate } from '@/components/modules/kitty/widgets/KittyOurDates/kittyOurDates.constants';
 import {
@@ -51,6 +53,16 @@ const Star: React.FC<StarProps> = ({ position, label, colorHex, baseScale, phase
       <mesh onClick={handleClick}>
         <sphereGeometry args={[0.35, 8, 8]} />
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+      </mesh>
+      {/* Subtle glow ring for visibility on any background */}
+      <mesh>
+        <sphereGeometry args={[0.17, 16, 16]} />
+        <meshBasicMaterial
+          color="#fffaf0"
+          transparent
+          opacity={0.12}
+          depthWrite={false}
+        />
       </mesh>
       {/* Visible star with pulse animation */}
       <mesh ref={meshRef}>
@@ -192,7 +204,10 @@ export const KittyMemoryConstellation: React.FC = () => {
     [dates]
   );
 
-  const colorPalette = ['#c9a66b', '#c98a9e', '#e3cfa4', '#d99cae'];
+  const isNightMode = useThemeStore((s) => s.isNightMode);
+  const colorPalette = isNightMode
+    ? ['#c9a66b', '#c98a9e', '#e3cfa4', '#d99cae']   /* dark — bright emissive */
+    : ['#8c3b4e', '#a8546a', '#b8895a', '#9c5f6f'];   /* light — high contrast */
 
   const handleStarTap = useCallback((label: string, screenPos: { x: number; y: number }) => {
     if (tooltipTimeout.current) clearTimeout(tooltipTimeout.current);
