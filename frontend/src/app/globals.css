@@ -20,21 +20,6 @@
   --kitty-accent-bg: #f8e9e3;
   --kitty-accent-border: #ecd3c6;
   --kitty-shadow: 0 30px 80px rgba(140, 59, 78, 0.16);
-
-  --admin-bg: #faf8f5;
-  --admin-card-bg: #ffffff;
-  --admin-sidebar-bg: #ffffff;
-  --admin-header-bg: rgba(255, 253, 250, 0.9);
-  --admin-border: #e8e4de;
-  --admin-text: #120f0d;
-  --admin-text-muted: #78716c;
-  --admin-badge-bg: #f4efe9;
-  --admin-badge-text: #120f0d;
-  --admin-btn-bg: #120f0d;
-  --admin-btn-text: #fdfbf7;
-  --admin-btn-hover: #231e1a;
-  --admin-row-bg: #faf8f5;
-  --admin-row-hover: #f4efe9;
 }
 
 * {
@@ -121,21 +106,6 @@ body::after {
   --kitty-accent-bg: rgba(140, 59, 78, 0.25);
   --kitty-accent-border: rgba(201, 166, 107, 0.3);
   --kitty-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
-
-  --admin-bg: #0d0b0a;
-  --admin-card-bg: #171412;
-  --admin-sidebar-bg: #090706;
-  --admin-header-bg: rgba(23, 20, 18, 0.9);
-  --admin-border: rgba(253, 251, 247, 0.1);
-  --admin-text: #fdfbf7;
-  --admin-text-muted: #b5aba1;
-  --admin-badge-bg: #2b2420;
-  --admin-badge-text: #fdfbf7;
-  --admin-btn-bg: #fdfbf7;
-  --admin-btn-text: #0d0b0a;
-  --admin-btn-hover: #ede9e1;
-  --admin-row-bg: #211c19;
-  --admin-row-hover: #2b2420;
 }
 
 [data-theme='dark'] body {

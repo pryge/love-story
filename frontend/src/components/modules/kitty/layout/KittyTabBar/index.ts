@@ -1,1 +1,0 @@
-export { KittyTabBar } from './KittyTabBar';

@@ -1,29 +1,21 @@
 import { create } from 'zustand';
 
-
-export type ThemeScope = 'kitty' | 'admin';
-
 interface ThemeState {
   isNightMode: boolean;
-  scope: ThemeScope;
-  initTheme: (scope?: ThemeScope) => void;
+  initTheme: (scope?: string) => void;
   toggleTheme: () => void;
 }
 
 export const useThemeStore = create<ThemeState>((set, get) => ({
   isNightMode: false,
-  scope: 'kitty',
 
-  initTheme: (scope: ThemeScope = 'kitty') => {
+  initTheme: () => {
     if (typeof window === 'undefined') return;
 
-    const themeKey = `${scope}_theme`;
-    const savedTheme = localStorage.getItem(themeKey);
+    const savedTheme = localStorage.getItem('kitty_theme');
     let isDark: boolean;
     if (savedTheme) {
       isDark = savedTheme === 'dark';
-    } else if (scope === 'admin') {
-      isDark = true;
     } else {
       const currentHour = new Date().getHours();
       isDark = currentHour >= 22 || currentHour < 7;
@@ -34,22 +26,17 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       document.documentElement.setAttribute('data-theme', themeValue);
     }
 
-    set({ isNightMode: isDark, scope });
+    set({ isNightMode: isDark });
   },
 
   toggleTheme: () => {
-    const scope = get().scope;
     const next = !get().isNightMode;
-    const themeKey = `${scope}_theme`;
     const themeValue = next ? 'dark' : 'light';
 
     if (typeof window !== 'undefined') {
       document.documentElement.setAttribute('data-theme', themeValue);
-      localStorage.setItem(themeKey, themeValue);
+      localStorage.setItem('kitty_theme', themeValue);
     }
     set({ isNightMode: next });
   },
 }));
-
-
-

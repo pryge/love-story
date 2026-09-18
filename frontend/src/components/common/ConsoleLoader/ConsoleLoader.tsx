@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './ConsoleLoader.module.css';
 import { ROMANTIC_LOGS } from './consoleLoader.constants';
-import { useConsoleLoaderStore } from '@/store/useConsoleLoaderStore';
 import { useThemeStore } from '@/store/useThemeStore';
 
 interface ConsoleLoaderProps {
@@ -12,13 +11,11 @@ interface ConsoleLoaderProps {
 }
 
 export const ConsoleLoader: React.FC<ConsoleLoaderProps> = ({ onComplete }) => {
-  const { isConsoleLoaderEnabled, initStore } = useConsoleLoaderStore();
   const initTheme = useThemeStore((state) => state.initTheme);
 
   useEffect(() => {
-    initStore();
     initTheme('kitty');
-  }, [initStore, initTheme]);
+  }, [initTheme]);
 
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
   const [currentText, setCurrentText] = useState<string>('');
@@ -74,7 +71,7 @@ export const ConsoleLoader: React.FC<ConsoleLoaderProps> = ({ onComplete }) => {
     }
   }, [lineIndex, charIndex, onComplete]);
 
-  if (!isConsoleLoaderEnabled || isCompleted) return null;
+  if (isCompleted) return null;
 
   return (
     <AnimatePresence>

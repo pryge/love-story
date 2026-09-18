@@ -1,0 +1,113 @@
+.container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.content {
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.counterPhrase {
+  font-family: var(--font-marck-script), cursive;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  color: var(--kitty-text);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.mosaicWrap {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--kitty-shadow);
+}
+
+.holdHint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  border-radius: 16px;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.holdIcon {
+  font-size: 36px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.holdText {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.progressBar {
+  width: 100%;
+  height: 3px;
+  background: rgba(140, 59, 78, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--kitty-wine) 0%, var(--kitty-champagne) 100%);
+  border-radius: 4px;
+  transform-origin: left;
+}
+
+:global([data-theme='dark']) .progressBar {
+  background: rgba(201, 138, 158, 0.15);
+}
+
+.nextBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 40px;
+  border-radius: 18px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--kitty-wine) 0%, var(--kitty-dusty-rose) 100%);
+  color: #fff8f5;
+  box-shadow: 0 8px 24px rgba(140, 59, 78, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.nextBtn:hover {
+  box-shadow: 0 12px 32px rgba(140, 59, 78, 0.4);
+  transform: translateY(-1px);
+}
+
+.nextBtn:active {
+  transform: scale(0.97);
+}

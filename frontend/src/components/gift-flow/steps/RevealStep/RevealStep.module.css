@@ -1,0 +1,107 @@
+.container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.preReveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.preIcon {
+  font-size: 48px;
+}
+
+.preText {
+  font-family: var(--font-marck-script), cursive;
+  font-size: 1.5rem;
+  color: var(--kitty-text-muted);
+}
+
+.revealCard {
+  max-width: 440px;
+  width: 100%;
+  background: var(--kitty-card-bg);
+  border: 1px solid var(--kitty-card-border);
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: var(--kitty-shadow);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.surpriseImageWrap {
+  width: 100%;
+  max-height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.surpriseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.surpriseContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.surpriseTitle {
+  font-family: var(--font-tenor-sans), serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--kitty-wine);
+  letter-spacing: 0.02em;
+}
+
+:global([data-theme='dark']) .surpriseTitle {
+  color: var(--kitty-champagne-soft);
+}
+
+.surpriseText {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1rem;
+  color: var(--kitty-text);
+  line-height: 1.6;
+}
+
+.nextBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 40px;
+  border-radius: 18px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--kitty-wine) 0%, var(--kitty-dusty-rose) 100%);
+  color: #fff8f5;
+  box-shadow: 0 8px 24px rgba(140, 59, 78, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  margin-top: 8px;
+}
+
+.nextBtn:hover {
+  box-shadow: 0 12px 32px rgba(140, 59, 78, 0.4);
+  transform: translateY(-1px);
+}
+
+.nextBtn:active {
+  transform: scale(0.97);
+}

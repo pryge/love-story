@@ -1,1 +1,0 @@
-export { KittyPhraseSwipeCard } from './KittyPhraseSwipeCard';

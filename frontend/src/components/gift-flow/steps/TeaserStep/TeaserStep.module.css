@@ -1,0 +1,21 @@
+.container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.phrase {
+  font-family: var(--font-marck-script), cursive;
+  font-size: clamp(1.5rem, 5vw, 2.4rem);
+  color: var(--kitty-wine);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 500px;
+  letter-spacing: 0.01em;
+}
+
+:global([data-theme='dark']) .phrase {
+  color: var(--kitty-champagne-soft);
+}

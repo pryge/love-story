@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Tenor_Sans, Manrope, Marck_Script } from 'next/font/google';
 import './globals.css';
-import { AuthProvider } from '@/providers/AuthProvider';
 
 const tenorSans = Tenor_Sans({
   weight: '400',
@@ -22,7 +21,7 @@ const marckScript = Marck_Script({
 
 export const metadata: Metadata = {
   title: 'Love Story 💖',
-  description: 'Birthday Gift App for Katia',
+  description: 'Подарунок для Каті',
 };
 
 export const viewport: Viewport = {
@@ -33,7 +32,7 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#FAF6F2' },
-    { media: '(prefers-color-scheme: dark)', color: '#1E2A3A' },
+    { media: '(prefers-color-scheme: dark)', color: '#1b1013' },
   ],
 };
 
@@ -54,14 +53,10 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var path = window.location.pathname;
-                  var scope = path.startsWith('/admin') ? 'admin' : 'kitty';
-                  var saved = localStorage.getItem(scope + '_theme');
+                  var saved = localStorage.getItem('kitty_theme');
                   var isDark;
                   if (saved) {
                     isDark = saved === 'dark';
-                  } else if (scope === 'admin') {
-                    isDark = true;
                   } else {
                     var hour = new Date().getHours();
                     isDark = hour >= 22 || hour < 7;
@@ -74,7 +69,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        {children}
       </body>
     </html>
   );

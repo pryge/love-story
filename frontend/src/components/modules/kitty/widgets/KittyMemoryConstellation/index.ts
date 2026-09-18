@@ -1,1 +1,0 @@
-export { KittyMemoryConstellation } from './KittyMemoryConstellation';
